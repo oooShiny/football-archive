@@ -1,0 +1,22 @@
+uuid: 0753b21d-72ae-4a1b-ae64-3a8d31a5e1fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - football_theme
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: football_theme_content
+theme: football_theme
+region: content
+weight: -5
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

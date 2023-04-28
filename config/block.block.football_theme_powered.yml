@@ -1,0 +1,22 @@
+uuid: 20230a73-dbb1-424d-b57c-e2497102cf73
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - football_theme
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: football_theme_powered
+theme: football_theme
+region: footer
+weight: -7
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

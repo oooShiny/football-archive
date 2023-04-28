@@ -1,0 +1,22 @@
+uuid: 2c623c2d-8d67-423e-ac11-6f9ffafb4c59
+langcode: en
+status: true
+dependencies:
+  theme:
+    - football_theme
+_core:
+  default_config_hash: ydSxdq7R66I8UMC460rOzlfzvlUL4VRbdwc6z9DWaUI
+id: football_theme_secondary_local_tasks
+theme: football_theme
+region: highlighted
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

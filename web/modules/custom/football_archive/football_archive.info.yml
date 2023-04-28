@@ -1,0 +1,5 @@
+name: Football Archive Module
+description: Provides custom development for this site.
+package: Football
+type: module
+core_version_requirement: ^9 || ^10

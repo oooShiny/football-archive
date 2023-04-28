@@ -1,0 +1,22 @@
+name: football_theme
+type: theme
+'base theme': stable9
+starterkit: true
+version: 1.x
+libraries:
+  - football_theme/base
+  - football_theme/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - football_theme/user
+  core/drupal.dropbutton:
+    - football_theme/dropbutton
+  core/drupal.dialog:
+    - football_theme/dialog
+  file/drupal.file:
+    - football_theme/file
+  core/drupal.progress:
+    - football_theme/progress
+core_version_requirement: ^10
+generator: 'starterkit_theme:10.0.8'

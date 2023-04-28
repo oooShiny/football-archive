@@ -1,0 +1,9 @@
+status: 1
+pattern: '[node:field_season] [node:field_week]: [node:field_home_team:entity] at [node:field_away_team:entity]'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - node.type.game_video

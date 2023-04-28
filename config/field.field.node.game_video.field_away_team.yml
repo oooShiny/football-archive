@@ -1,0 +1,29 @@
+uuid: b6871483-4a44-4d94-ad09-246b2f070f81
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_away_team
+    - node.type.game_video
+    - taxonomy.vocabulary.teams
+id: node.game_video.field_away_team
+field_name: field_away_team
+entity_type: node
+bundle: game_video
+label: 'Away Team'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      teams: teams
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
