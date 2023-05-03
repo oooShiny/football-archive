@@ -19,3 +19,15 @@ function football_theme_preprocess_image_widget(array &$variables) {
     unset($data['preview']);
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function football_theme_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if ($node->bundle() == 'game_video') {
+    $variables['library_id'] = '114078';
+    $variables['video_id'] = $node->get('field_video_id')->value;
+
+  }
+}

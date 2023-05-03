@@ -1,0 +1,139 @@
+<?php
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\node\Entity\Node;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
+
+/**
+ * Implements hook_cron().
+ */
+function football_archive_cron() {
+  // Get all video nodes, organize them by video ID.
+  $video_nodes = football_archive_get_video_nodes();
+  // Get all team names -> node IDs.
+  $team_names = football_archive_get_team_names();
+
+  // Fetch data from bunny.net.
+  $client = new Client();
+  $folders = [];
+  try {
+    // Get all folders in the library.
+      $response = $client->get(
+      'https://video.bunnycdn.com/library/114078/collections?page=1&itemsPerPage=100&orderBy=date',
+      [
+        'headers' => [
+          'AccessKey' => 'afcf483b-fda4-4b21-a7aac9ff46e6-7692-46a2',
+          'accept' => 'application/json',
+        ]
+      ]
+    );
+    $result = json_decode($response->getBody(), TRUE);
+    foreach ($result['items'] as $folder) {
+      $folders[$folder['guid']] = $folder['name'];
+    }
+  }
+  catch (GuzzleException $e) {
+    // log exception
+  }
+
+  try {
+    // Get all videos in the library.
+    $response = $client->get(
+      'https://video.bunnycdn.com/library/114078/videos?page=1&itemsPerPage=500&orderBy=date',
+      [
+        'headers' => [
+          'AccessKey' => 'afcf483b-fda4-4b21-a7aac9ff46e6-7692-46a2',
+          'accept' => 'application/json',
+        ]
+      ]
+    );
+    $result = json_decode($response->getBody(), TRUE);
+    foreach ($result['items'] as $video) {
+      if (!array_key_exists($video['guid'], $video_nodes)) {
+        $video_fid = $video['collectionId'];
+        // If this video is in a game folder, create new game_video node.
+        if (str_contains($folders[$video_fid], 'Games')) {
+          $title_parts = explode(':', $video['title']);
+          $season_week = explode(' ', $title_parts[0]);
+          $season = array_shift($season_week);
+          $w = implode(' ', $season_week);
+
+          // The second part of the title should be "Team1 @ Team2".
+          if (str_contains($title_parts[1], '@')) {
+            // Get team nids from Team names in title.
+            $teams = explode(' @ ', $title_parts[1]);
+            $home = $team_names[trim($teams[0])];
+            $away = $team_names[trim($teams[1])];
+
+            // Get week from field values.
+            $week_values = FieldConfig::load('node.game_video.field_week')
+              ->getFieldStorageDefinition()
+              ->getSettings()['allowed_values'];
+            $week = array_search($w, $week_values);
+            // @todo: Get team taxonomies to set home/away teams.
+            $node = Node::create([
+              'type' => 'game_video',
+              'field_season' => $season,
+              'field_week' => $week,
+              'field_home_team' => $home,
+              'field_away_team' => $away,
+            ]);
+          }
+          else {
+            // @todo: Create a list of games that need to be renamed.
+            continue;
+          }
+        }
+        $node->set('title', $video['name']);
+        $node->set('field_video_id', $video['guid']);
+        $node->set('field_video_collection_id', $video['collectionId']);
+        $node->set('field_video_length', $video['length']);
+        $node->set('field_views', $video['views']);
+        $node->set('field_average_watch_time', $video['averageWatchTime']);
+        $node->set('field_total_watch_time', $video['totalWatchTime']);
+        $node->save();
+      }
+    }
+
+  }
+  catch (GuzzleException $e) {
+    // log exception
+  }
+}
+
+function football_archive_get_team_names() {
+  $nids = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->getQuery()
+    ->accessCheck(FALSE)
+    ->condition('type','team')
+    ->execute();
+  $team_names = [];
+  foreach (Node::loadMultiple($nids) as $team) {
+    $team_names[$team->label()] = $team->id();
+    if ($team->field_team_name_history->getValue()) {
+      foreach ($team->field_team_name_history->referencedEntities() as $paragraph) {
+        $name = $paragraph->get('field_team_name')->value;
+        $team_names[$name] = $team->id();
+      }
+    }
+  }
+  return $team_names;
+}
+
+function football_archive_get_video_nodes() {
+  // @todo: Check for more than just game videos.
+  $nids = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->getQuery()
+    ->accessCheck(FALSE)
+    ->condition('type','game_video')
+    ->execute();
+  $video_nodes = [];
+  foreach (Node::loadMultiple($nids) as $game) {
+    $video_nodes[$game->get('field_video_id')] = $game->id();
+  }
+  return $video_nodes;
+}
