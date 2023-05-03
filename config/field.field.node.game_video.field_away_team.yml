@@ -1,11 +1,11 @@
-uuid: b6871483-4a44-4d94-ad09-246b2f070f81
+uuid: 3ee9811f-ef95-4eb6-8c2c-eaa884858268
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_away_team
     - node.type.game_video
-    - taxonomy.vocabulary.teams
+    - node.type.team
 id: node.game_video.field_away_team
 field_name: field_away_team
 entity_type: node
@@ -17,13 +17,13 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:taxonomy_term'
+  handler: 'default:node'
   handler_settings:
     target_bundles:
-      teams: teams
+      team: team
     sort:
-      field: name
-      direction: asc
-    auto_create: true
+      field: _none
+      direction: ASC
+    auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

@@ -5,12 +5,16 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.game_video.body
+    - field.field.node.game_video.field_average_watch_time
     - field.field.node.game_video.field_away_team
     - field.field.node.game_video.field_date
     - field.field.node.game_video.field_home_team
     - field.field.node.game_video.field_season
+    - field.field.node.game_video.field_total_watch_time
+    - field.field.node.game_video.field_video_collection_id
     - field.field.node.game_video.field_video_id
-    - field.field.node.game_video.field_video_library_id
+    - field.field.node.game_video.field_video_length
+    - field.field.node.game_video.field_views
     - field.field.node.game_video.field_week
     - node.type.game_video
   module:
@@ -35,10 +39,14 @@ content:
     weight: 100
     region: content
 hidden:
+  field_average_watch_time: true
   field_away_team: true
   field_date: true
   field_home_team: true
   field_season: true
+  field_total_watch_time: true
+  field_video_collection_id: true
   field_video_id: true
-  field_video_library_id: true
+  field_video_length: true
+  field_views: true
   field_week: true

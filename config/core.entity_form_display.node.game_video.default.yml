@@ -4,12 +4,16 @@ status: true
 dependencies:
   config:
     - field.field.node.game_video.body
+    - field.field.node.game_video.field_average_watch_time
     - field.field.node.game_video.field_away_team
     - field.field.node.game_video.field_date
     - field.field.node.game_video.field_home_team
     - field.field.node.game_video.field_season
+    - field.field.node.game_video.field_total_watch_time
+    - field.field.node.game_video.field_video_collection_id
     - field.field.node.game_video.field_video_id
-    - field.field.node.game_video.field_video_library_id
+    - field.field.node.game_video.field_video_length
+    - field.field.node.game_video.field_views
     - field.field.node.game_video.field_week
     - node.type.game_video
   module:
@@ -52,6 +56,23 @@ third_party_settings:
         open: true
         description: ''
         required_fields: true
+    group_view_stats:
+      children:
+        - field_views
+        - field_average_watch_time
+        - field_total_watch_time
+      label: 'View Stats'
+      region: content
+      parent_name: ''
+      weight: 13
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
 id: node.game_video.default
 targetEntityType: node
 bundle: game_video
@@ -73,9 +94,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_average_watch_time:
+    type: number
+    weight: 15
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_away_team:
     type: entity_reference_autocomplete
-    weight: 13
+    weight: 27
     region: content
     settings:
       match_operator: CONTAINS
@@ -91,7 +119,7 @@ content:
     third_party_settings: {  }
   field_home_team:
     type: entity_reference_autocomplete
-    weight: 12
+    weight: 26
     region: content
     settings:
       match_operator: CONTAINS
@@ -106,20 +134,41 @@ content:
     settings:
       placeholder: ''
     third_party_settings: {  }
-  field_video_id:
+  field_total_watch_time:
+    type: number
+    weight: 16
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_video_collection_id:
     type: string_textfield
-    weight: 27
+    weight: 11
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_video_library_id:
+  field_video_id:
     type: string_textfield
-    weight: 26
+    weight: 10
     region: content
     settings:
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_video_length:
+    type: number
+    weight: 12
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_views:
+    type: number
+    weight: 14
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_week:

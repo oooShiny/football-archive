@@ -1,0 +1,29 @@
+uuid: cc296e00-f5e0-4dee-b781-420378ee8dc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.week
+  module:
+    - facets
+    - system
+  theme:
+    - football_theme
+id: week
+theme: football_theme
+region: content
+weight: -4
+provider: null
+plugin: 'facet_block:week'
+settings:
+  id: 'facet_block:week'
+  label: 'Filter by Week'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: week
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search/videos

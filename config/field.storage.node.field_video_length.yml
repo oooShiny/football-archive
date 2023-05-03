@@ -1,15 +1,16 @@
-uuid: 84fb67af-2989-4828-add7-fc0396a2084a
+uuid: dfd2f103-71bc-475c-a6b0-3e9b36f11ac1
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_away_team
-field_name: field_away_team
+id: node.field_video_length
+field_name: field_video_length
 entity_type: node
-type: entity_reference
+type: integer
 settings:
-  target_type: node
+  unsigned: false
+  size: normal
 module: core
 locked: false
 cardinality: 1

@@ -1,0 +1,24 @@
+uuid: bdb95830-322c-4010-bf4e-f80a2e61e9d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.team.field_pfr_id
+    - field.field.node.team.field_team_name_history
+    - node.type.team
+  module:
+    - user
+id: node.team.teaser
+targetEntityType: node
+bundle: team
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_pfr_id: true
+  field_team_name_history: true

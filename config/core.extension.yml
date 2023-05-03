@@ -19,11 +19,14 @@ module:
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
+  entity_reference_revisions: 0
+  facets: 0
   field: 0
   field_group: 0
   field_ui: 0
   file: 0
   filter: 0
+  football_archive: 0
   gin_login: 0
   help: 0
   history: 0
@@ -40,8 +43,10 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
-  search: 0
+  search_api: 0
+  search_api_db: 0
   select2: 0
+  select2_facets: 0
   shortcut: 0
   system: 0
   taxonomy: 0
@@ -56,6 +61,7 @@ module:
   views_ui: 0
   pathauto: 1
   views: 10
+  paragraphs: 11
   standard: 1000
 theme:
   olivero: 0

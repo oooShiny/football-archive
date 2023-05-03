@@ -1,15 +1,14 @@
-uuid: 84fb67af-2989-4828-add7-fc0396a2084a
+uuid: 03efbc23-e44b-4219-926e-7e6a8d854da4
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_away_team
-field_name: field_away_team
+id: node.field_total_watch_time
+field_name: field_total_watch_time
 entity_type: node
-type: entity_reference
-settings:
-  target_type: node
+type: float
+settings: {  }
 module: core
 locked: false
 cardinality: 1

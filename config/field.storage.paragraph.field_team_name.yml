@@ -1,15 +1,15 @@
-uuid: 00ade748-545e-4ad0-9fe1-eb326b2ede6d
+uuid: 386ce89e-d43a-4c4e-a011-50445eefe0b9
 langcode: en
 status: true
 dependencies:
   module:
-    - node
-id: node.field_video_library_id
-field_name: field_video_library_id
-entity_type: node
+    - paragraphs
+id: paragraph.field_team_name
+field_name: field_team_name
+entity_type: paragraph
 type: string
 settings:
-  max_length: 255
+  max_length: 512
   case_sensitive: false
   is_ascii: false
 module: core

@@ -1,0 +1,31 @@
+uuid: aecac6d5-37f9-41c2-8b2d-02fda0a34d04
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_team_name_history
+    - node.type.team
+    - paragraphs.paragraphs_type.team_name_change
+  module:
+    - entity_reference_revisions
+id: node.team.field_team_name_history
+field_name: field_team_name_history
+entity_type: node
+bundle: team
+label: 'Team Name History'
+description: 'Use this field for when a team changes their name.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      team_name_change: team_name_change
+    negate: 0
+    target_bundles_drag_drop:
+      team_name_change:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

@@ -1,15 +1,16 @@
-uuid: 84fb67af-2989-4828-add7-fc0396a2084a
+uuid: 3408fe89-0d08-4074-9b46-83f094510bae
 langcode: en
 status: true
 dependencies:
   module:
-    - node
-id: node.field_away_team
-field_name: field_away_team
-entity_type: node
-type: entity_reference
+    - paragraphs
+id: paragraph.field_season
+field_name: field_season
+entity_type: paragraph
+type: integer
 settings:
-  target_type: node
+  unsigned: false
+  size: normal
 module: core
 locked: false
 cardinality: 1
