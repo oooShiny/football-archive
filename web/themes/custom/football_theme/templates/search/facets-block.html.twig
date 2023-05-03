@@ -1,0 +1,10 @@
+<div class="flex justify-around bg-gray-400 py-2">
+    {% for facet in facets %}
+      <div {{ facet.attributes.addClass('facet-block') }}>
+        {% if show_title %}
+          <p class="facet-block__title">{{ facet.title }}</p>
+        {% endif %}
+        <div class="facet-block__content">{{ facet.content }}</div>
+      </div>
+    {% endfor %}
+</div>

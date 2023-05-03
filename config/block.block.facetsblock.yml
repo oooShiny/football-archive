@@ -1,0 +1,32 @@
+uuid: 8e86f11b-0120-4d30-ab05-58bd829150df
+langcode: en
+status: true
+dependencies:
+  module:
+    - facets_block
+    - system
+  theme:
+    - football_theme
+id: facetsblock
+theme: football_theme
+region: content
+weight: -5
+provider: null
+plugin: facets_block
+settings:
+  id: facets_block
+  label: 'Search Facets Block'
+  label_display: '0'
+  provider: facets_block
+  show_title: false
+  exclude_empty_facets: true
+  hide_empty_block: false
+  facets_to_include:
+    - 'facet_block:season'
+    - 'facet_block:week'
+  add_js_classes: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search/videos
