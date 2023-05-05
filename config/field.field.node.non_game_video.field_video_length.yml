@@ -1,0 +1,23 @@
+uuid: 7c88cfb7-1a10-4d91-b9a9-586394fdafb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_video_length
+    - node.type.non_game_video
+id: node.non_game_video.field_video_length
+field_name: field_video_length
+entity_type: node
+bundle: non_game_video
+label: 'Video Length'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

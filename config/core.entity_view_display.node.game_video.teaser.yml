@@ -1,0 +1,84 @@
+uuid: b2873939-8878-494a-9acd-0b4dad4f98e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.game_video.body
+    - field.field.node.game_video.field_average_watch_time
+    - field.field.node.game_video.field_away_team
+    - field.field.node.game_video.field_date
+    - field.field.node.game_video.field_home_team
+    - field.field.node.game_video.field_season
+    - field.field.node.game_video.field_teams_involved
+    - field.field.node.game_video.field_total_watch_time
+    - field.field.node.game_video.field_video_collection_id
+    - field.field.node.game_video.field_video_id
+    - field.field.node.game_video.field_video_length
+    - field.field.node.game_video.field_views
+    - field.field.node.game_video.field_week
+    - node.type.game_video
+  module:
+    - options
+    - user
+id: node.game_video.teaser
+targetEntityType: node
+bundle: game_video
+mode: teaser
+content:
+  field_away_team:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_home_team:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_season:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_views:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_week:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_average_watch_time: true
+  field_date: true
+  field_teams_involved: true
+  field_total_watch_time: true
+  field_video_collection_id: true
+  field_video_id: true
+  field_video_length: true
+  search_api_excerpt: true

@@ -1,0 +1,22 @@
+uuid: 4620d4b5-aede-40e7-aebe-e9519572c1e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.non_game_video
+id: node.non_game_video.promote
+field_name: promote
+entity_type: node
+bundle: non_game_video
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

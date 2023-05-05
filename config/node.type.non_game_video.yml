@@ -1,0 +1,17 @@
+uuid: 8f3f3dbc-0eea-4756-a8c3-4ef1e869ccb2
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Non-Game Video'
+type: non_game_video
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

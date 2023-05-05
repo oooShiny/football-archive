@@ -1,0 +1,23 @@
+uuid: 367d1c61-62ef-477b-a4fc-20eb7081de72
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_season
+    - paragraphs.paragraphs_type.team_name_change
+id: paragraph.team_name_change.field_season
+field_name: field_season
+entity_type: paragraph
+bundle: team_name_change
+label: Season
+description: 'The last season this team had this name'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

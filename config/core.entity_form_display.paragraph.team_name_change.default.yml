@@ -1,0 +1,31 @@
+uuid: aef13897-0529-4975-a08d-e41cadd3d96b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.team_name_change.field_season
+    - field.field.paragraph.team_name_change.field_team_name
+    - paragraphs.paragraphs_type.team_name_change
+id: paragraph.team_name_change.default
+targetEntityType: paragraph
+bundle: team_name_change
+mode: default
+content:
+  field_season:
+    type: number
+    weight: 0
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_team_name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,90 @@
+uuid: 2170dc44-5a9a-4254-81e0-9106bfca319e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_week
+field_name: field_week
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '1'
+      label: 'Week 1'
+    -
+      value: '2'
+      label: 'Week 2'
+    -
+      value: '3'
+      label: 'Week 3'
+    -
+      value: '4'
+      label: 'Week 4'
+    -
+      value: '5'
+      label: 'Week 5'
+    -
+      value: '6'
+      label: 'Week 6'
+    -
+      value: '7'
+      label: 'Week 7'
+    -
+      value: '8'
+      label: 'Week 8'
+    -
+      value: '9'
+      label: 'Week 9'
+    -
+      value: '10'
+      label: 'Week 10'
+    -
+      value: '11'
+      label: 'Week 11'
+    -
+      value: '12'
+      label: 'Week 12'
+    -
+      value: '13'
+      label: 'Week 13'
+    -
+      value: '14'
+      label: 'Week 14'
+    -
+      value: '15'
+      label: 'Week 15'
+    -
+      value: '16'
+      label: 'Week 16'
+    -
+      value: '17'
+      label: 'Week 17'
+    -
+      value: '18'
+      label: 'Week 18'
+    -
+      value: '19'
+      label: 'Week 19'
+    -
+      value: '20'
+      label: Wildcard
+    -
+      value: '21'
+      label: Divisional
+    -
+      value: '22'
+      label: 'Conference Championship'
+    -
+      value: '23'
+      label: 'Super Bowl'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

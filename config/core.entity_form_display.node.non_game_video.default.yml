@@ -1,0 +1,138 @@
+uuid: 36bea16e-64cb-4489-8c08-e27a9e3c6430
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.non_game_video.body
+    - field.field.node.non_game_video.field_average_watch_time
+    - field.field.node.non_game_video.field_total_watch_time
+    - field.field.node.non_game_video.field_video_category
+    - field.field.node.non_game_video.field_video_collection_id
+    - field.field.node.non_game_video.field_video_id
+    - field.field.node.non_game_video.field_video_length
+    - field.field.node.non_game_video.field_views
+    - node.type.non_game_video
+  module:
+    - path
+    - text
+id: node.non_game_video.default
+targetEntityType: node
+bundle: non_game_video
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 121
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_average_watch_time:
+    type: number
+    weight: 126
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_total_watch_time:
+    type: number
+    weight: 125
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_video_category:
+    type: entity_reference_autocomplete
+    weight: 124
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_video_collection_id:
+    type: string_textfield
+    weight: 123
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_video_id:
+    type: string_textfield
+    weight: 122
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_video_length:
+    type: number
+    weight: 127
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_views:
+    type: number
+    weight: 128
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,29 @@
+uuid: 9d609530-6d09-4fc2-b675-848839a167c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teams_involved
+    - node.type.game_video
+    - node.type.team
+id: node.game_video.field_teams_involved
+field_name: field_teams_involved
+entity_type: node
+bundle: game_video
+label: 'Teams Involved'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      team: team
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,23 @@
+uuid: c779fde4-b6ec-47f4-9819-15902dc9094e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_total_watch_time
+    - node.type.non_game_video
+id: node.non_game_video.field_total_watch_time
+field_name: field_total_watch_time
+entity_type: node
+bundle: non_game_video
+label: 'Total Watch Time'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

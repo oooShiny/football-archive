@@ -1,0 +1,17 @@
+uuid: 7a32253a-99e6-4937-b508-29492cf40ed8
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Game Video'
+type: game_video
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

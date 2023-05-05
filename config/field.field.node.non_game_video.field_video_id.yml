@@ -1,0 +1,19 @@
+uuid: 70d6a6b2-59d8-443e-a24c-624a74446cf6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_video_id
+    - node.type.non_game_video
+id: node.non_game_video.field_video_id
+field_name: field_video_id
+entity_type: node
+bundle: non_game_video
+label: 'Video ID'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

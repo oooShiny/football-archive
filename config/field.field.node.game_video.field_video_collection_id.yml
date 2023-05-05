@@ -1,0 +1,19 @@
+uuid: 29203119-139d-4869-b5e9-d25481b56bc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_video_collection_id
+    - node.type.game_video
+id: node.game_video.field_video_collection_id
+field_name: field_video_collection_id
+entity_type: node
+bundle: game_video
+label: 'Video Collection ID'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

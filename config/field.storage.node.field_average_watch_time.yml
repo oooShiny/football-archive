@@ -1,0 +1,20 @@
+uuid: 83f388c2-63ed-4588-81b6-963151827502
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_average_watch_time
+field_name: field_average_watch_time
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

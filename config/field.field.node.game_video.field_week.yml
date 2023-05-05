@@ -1,0 +1,21 @@
+uuid: 9ae950ed-fef6-4f6f-935f-0d0f38fac840
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_week
+    - node.type.game_video
+  module:
+    - options
+id: node.game_video.field_week
+field_name: field_week
+entity_type: node
+bundle: game_video
+label: Week
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

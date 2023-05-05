@@ -1,0 +1,23 @@
+uuid: 738c8a61-ec31-4266-ba84-ad5ab122c14d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_views
+    - node.type.game_video
+id: node.game_video.field_views
+field_name: field_views
+entity_type: node
+bundle: game_video
+label: Views
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

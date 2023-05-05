@@ -1,0 +1,23 @@
+uuid: 04189010-52aa-4b9d-92b9-7166607a01a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_average_watch_time
+    - node.type.game_video
+id: node.game_video.field_average_watch_time
+field_name: field_average_watch_time
+entity_type: node
+bundle: game_video
+label: 'Average Watch Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
