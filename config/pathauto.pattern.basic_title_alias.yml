@@ -1,0 +1,14 @@
+uuid: 900d3173-f2f2-40ec-b167-c41517a4b28d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: basic_title_alias
+label: 'Basic Title Alias'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }
