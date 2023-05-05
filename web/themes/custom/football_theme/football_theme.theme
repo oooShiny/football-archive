@@ -28,6 +28,14 @@ function football_theme_preprocess_node(&$variables) {
   if ($node->bundle() == 'game_video') {
     $variables['library_id'] = '114078';
     $variables['video_id'] = $node->get('field_video_id')->value;
+    $variables['season'] = $node->get('field_season')->value;
+    $variables['week'] = $node->get('field_week')->value;
 
+    $variables['video_time'] = gmdate('H:i:s', $node->get('field_video_length')->value);
+    $variables['video'] = [
+      'views' => $node->get('field_views')->value,
+      'total_watch_time' => $node->get('field_total_watch_time')->value,
+      'average_watch_time' => $node->get('field_average_watch_time')->value,
+    ];
   }
 }

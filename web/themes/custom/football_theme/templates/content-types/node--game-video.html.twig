@@ -1,3 +1,8 @@
+<h1 class="flex gap-1 text-2xl font-light"><a class="underline text-blue-500"href="/search/videos?f[0]=season:{{ season }}">{{ content.field_season }}</a> {{ content.field_week }}</h1>
+<h2 class="flex gap-1 text-xl font-light">
+    <span class="underline text-blue-500">{{ content.field_home_team }}</span>
+    @
+    <span class="underline text-blue-500">{{ content.field_away_team }}</span></h2>
 <div style="position: relative; padding-top: 56.25%;">
     <iframe src="https://iframe.mediadelivery.net/embed/{{ library_id }}/{{ video_id }}"
             loading="lazy" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;"
@@ -5,4 +10,12 @@
     </iframe>
 </div>
 
-https://vz-480571ad-a3e.b-cdn.net/{{ video_id }}/preview.webp
+<div>
+    <ul class="lg:flex lg:justify-between bg-gray-400 text-gray-50">
+        <li class="p-2"><span class="font-bold">Video length:</span> {{ video_time }}</li>
+        <li class="p-2"><span class="font-bold">Views:</span> {{ video.views }}</li>
+        <li class="p-2"><span class="font-bold">Total Watch Time:</span> {{ video.total_watch_time }}</li>
+        <li class="p-2"><span class="font-bold">Average Watch Time:</span> {{ video.average_watch_time }}</li>
+    </ul>
+</div>
+

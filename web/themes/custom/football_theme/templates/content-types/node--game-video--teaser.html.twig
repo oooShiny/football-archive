@@ -1,4 +1,21 @@
 <div class="flex gap-2 max-h-24 py-4 border-b">
     <a href="{{ url }}" rel="bookmark"><img class="w-24" src="https://vz-480571ad-a3e.b-cdn.net/{{ video_id }}/thumbnail.jpg" alt="Game Preview thumbnail"></a>
-    <h2 class="text-xl font-light underline text-blue-500"><a href="{{ url }}" rel="bookmark">{{ label }}</a></h2>
+    <div>
+        <h2 class="flex gap-1 text-2xl font-light">
+            <a href="{{ url }}">{{ content.field_season }}</a>
+            <a href="{{ url }}">{{ content.field_week }}</a>
+            :
+            <a href="{{ url }}">{{ content.field_home_team }}</a>
+            @
+            <a href="{{ url }}">{{ content.field_away_team }}</a>
+        </h2>
+        <div>
+            <ul class="lg:flex lg:justify-between">
+                <li class="p-2"><span class="font-bold">Length:</span> <span class="border p-2">{{ video_time }}</span></li>
+                <li class="p-2"><span class="font-bold">Views:</span> <span class="border p-2">{{ video.views }}</span></li>
+            </ul>
+        </div>
+
+    </div>
+
 </div>

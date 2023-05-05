@@ -1,10 +1,25 @@
 <?php
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\node\Entity\Node;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
+
+
+/**
+ * Implements hook_entity_presave().
+ */
+function football_archive_entity_presave(EntityInterface $entity) {
+  if ($entity->bundle() == 'game_video' && $entity->field_teams_involved->isEmpty()) {
+    $home = $entity->field_home_team->target_id;
+    $away = $entity->field_away_team->target_id;
+    $field_teams_involved[] = ['target_id' => $home];
+    $field_teams_involved[] = ['target_id' => $away];
+    $entity->set('field_teams_involved', $field_teams_involved);
+  }
+}
 
 /**
  * Implements hook_cron().
@@ -86,6 +101,13 @@ function football_archive_cron() {
             continue;
           }
         }
+        // Otherwise, this is a non-game video.
+        else {
+          $node = Node::create([
+            'type' => 'non_game_video',
+
+          ]);
+        }
         $node->set('title', $video['name']);
         $node->set('field_video_id', $video['guid']);
         $node->set('field_video_collection_id', $video['collectionId']);
@@ -124,16 +146,15 @@ function football_archive_get_team_names() {
 }
 
 function football_archive_get_video_nodes() {
-  // @todo: Check for more than just game videos.
   $nids = \Drupal::entityTypeManager()
     ->getStorage('node')
     ->getQuery()
     ->accessCheck(FALSE)
-    ->condition('type','game_video')
+    ->condition('type',['game_video', 'non_game_video'], 'IN')
     ->execute();
   $video_nodes = [];
-  foreach (Node::loadMultiple($nids) as $game) {
-    $video_nodes[$game->get('field_video_id')] = $game->id();
+  foreach (Node::loadMultiple($nids) as $video) {
+    $video_nodes[$video->get('field_video_id')->value] = $video->id();
   }
   return $video_nodes;
 }

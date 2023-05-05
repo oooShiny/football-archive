@@ -1,0 +1,33 @@
+uuid: be4d35ca-5438-4c01-9046-0d12c5d25ec9
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.team_game_videos
+  module:
+    - node
+    - views
+  theme:
+    - football_theme
+id: views_block__team_game_videos_block_1
+theme: football_theme
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:team_game_videos-block_1'
+settings:
+  id: 'views_block:team_game_videos-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      team: team

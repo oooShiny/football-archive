@@ -23,6 +23,7 @@ settings:
   hide_empty_block: false
   facets_to_include:
     - 'facet_block:season'
+    - 'facet_block:team'
     - 'facet_block:week'
   add_js_classes: false
 visibility:
