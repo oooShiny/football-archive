@@ -6,6 +6,57 @@ dependencies:
     - field.field.paragraph.team_name_change.field_season
     - field.field.paragraph.team_name_change.field_team_name
     - paragraphs.paragraphs_type.team_name_change
+  module:
+    - field_layout
+    - layout_builder
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  layout_builder:
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          c587c4de-dd24-4fff-a25b-a74782a6141d:
+            uuid: c587c4de-dd24-4fff-a25b-a74782a6141d
+            region: content
+            configuration:
+              id: 'field_block:paragraph:team_name_change:field_season'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: number_integer
+                label: above
+                settings:
+                  thousand_separator: ''
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          58c48709-c182-4562-a7cf-8c771d281779:
+            uuid: 58c48709-c182-4562-a7cf-8c771d281779
+            region: content
+            configuration:
+              id: 'field_block:paragraph:team_name_change:field_team_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
 id: paragraph.team_name_change.default
 targetEntityType: paragraph
 bundle: team_name_change
@@ -28,4 +79,5 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

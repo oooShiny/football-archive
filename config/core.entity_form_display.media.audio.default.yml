@@ -6,8 +6,15 @@ dependencies:
     - field.field.media.audio.field_media_audio_file
     - media.type.audio
   module:
+    - field_layout
     - file
+    - layout_discovery
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 _core:
   default_config_hash: G2_SKH3jmI9FQeXSUxo3KgQqiyF1hPDEkc7-3-rCSbc
 id: media.audio.default

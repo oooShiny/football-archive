@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.node.non_game_video.body
     - field.field.node.non_game_video.field_average_watch_time
+    - field.field.node.non_game_video.field_season
+    - field.field.node.non_game_video.field_team_s_involved
     - field.field.node.non_game_video.field_total_watch_time
     - field.field.node.non_game_video.field_video_category
     - field.field.node.non_game_video.field_video_collection_id
@@ -13,8 +15,15 @@ dependencies:
     - field.field.node.non_game_video.field_views
     - node.type.non_game_video
   module:
+    - field_layout
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.non_game_video.default
 targetEntityType: node
 bundle: non_game_video
@@ -41,6 +50,23 @@ content:
     weight: 126
     region: content
     settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_season:
+    type: number
+    weight: 132
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_team_s_involved:
+    type: entity_reference_autocomplete_tags
+    weight: 131
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_total_watch_time:

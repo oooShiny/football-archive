@@ -29,6 +29,8 @@ function football_archive_cron() {
   $video_nodes = football_archive_get_video_nodes();
   // Get all team names -> node IDs.
   $team_names = football_archive_get_team_names();
+  // Get all video categories for non-game videos.
+  $video_categories = football_archive_get_video_categories();
 
   // Fetch data from bunny.net.
   $client = new Client();
@@ -66,6 +68,7 @@ function football_archive_cron() {
     );
     $result = json_decode($response->getBody(), TRUE);
     foreach ($result['items'] as $video) {
+      // Video doesn't exist, so create a new one.
       if (!array_key_exists($video['guid'], $video_nodes)) {
         $video_fid = $video['collectionId'];
         // If this video is in a game folder, create new game_video node.
@@ -90,6 +93,7 @@ function football_archive_cron() {
             // @todo: Get team taxonomies to set home/away teams.
             $node = Node::create([
               'type' => 'game_video',
+              'title' => $video['name'],
               'field_season' => $season,
               'field_week' => $week,
               'field_home_team' => $home,
@@ -103,15 +107,43 @@ function football_archive_cron() {
         }
         // Otherwise, this is a non-game video.
         else {
+
           $node = Node::create([
             'type' => 'non_game_video',
-
           ]);
+
+          // Figure out video type from the title.
+          if (str_contains($video['title'], 'Yearbook')) {
+            $node->set('field_video_category', ['target_id' => $video_categories['Yearbook']]);
+            $title_parts = explode(' ', $video['title']);
+            if (array_key_exists($title_parts[1], $team_names)) {
+              $node->set('field_team_s_involved', ['target_id' => $team_names[$title_parts[1]]]);
+            }
+            if (is_numeric($title_parts[0])) {
+              $node->set('field_season', $title_parts[0]);
+            }
+          }
+          elseif (str_contains($video['title'], 'NFL Films')) {
+            $node->set('field_video_category', ['target_id' => $video_categories['NFL Films Special']]);
+          }
+          else {
+            // Don't pull in videos we haven't categorized yet.
+            continue;
+          }
+          $node->set('title', $video['title']);
         }
-        $node->set('title', $video['name']);
+
         $node->set('field_video_id', $video['guid']);
         $node->set('field_video_collection_id', $video['collectionId']);
         $node->set('field_video_length', $video['length']);
+        $node->set('field_views', $video['views']);
+        $node->set('field_average_watch_time', $video['averageWatchTime']);
+        $node->set('field_total_watch_time', $video['totalWatchTime']);
+        $node->save();
+      }
+      // Video already exists, update the video stats.
+      else {
+        $node = Node::load($video_nodes[$video['guid']]);
         $node->set('field_views', $video['views']);
         $node->set('field_average_watch_time', $video['averageWatchTime']);
         $node->set('field_total_watch_time', $video['totalWatchTime']);
@@ -157,4 +189,15 @@ function football_archive_get_video_nodes() {
     $video_nodes[$video->get('field_video_id')->value] = $video->id();
   }
   return $video_nodes;
+}
+
+function football_archive_get_video_categories() {
+  $video_categories = [];
+  $terms =\Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term')
+    ->loadTree('video_category', 0, NULL, TRUE);
+  foreach ($terms as $term) {
+    $video_categories[$term->getName()] = $term->id();
+  }
+  return $video_categories;
 }

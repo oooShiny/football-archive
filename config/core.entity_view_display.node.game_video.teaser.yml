@@ -19,8 +19,19 @@ dependencies:
     - field.field.node.game_video.field_week
     - node.type.game_video
   module:
+    - field_layout
+    - layout_builder
+    - layout_discovery
     - options
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  layout_builder:
+    enabled: false
+    allow_custom: false
 id: node.game_video.teaser
 targetEntityType: node
 bundle: game_video

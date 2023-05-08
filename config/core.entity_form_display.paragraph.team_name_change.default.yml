@@ -6,6 +6,14 @@ dependencies:
     - field.field.paragraph.team_name_change.field_season
     - field.field.paragraph.team_name_change.field_team_name
     - paragraphs.paragraphs_type.team_name_change
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.team_name_change.default
 targetEntityType: paragraph
 bundle: team_name_change

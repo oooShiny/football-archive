@@ -12,9 +12,103 @@ dependencies:
     - node.type.article
   module:
     - comment
+    - field_layout
     - image
+    - layout_builder
+    - layout_discovery
     - text
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  layout_builder:
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          afe2b186-7e39-4041-be9b-fd3b6b99bd63:
+            uuid: afe2b186-7e39-4041-be9b-fd3b6b99bd63
+            region: content
+            configuration:
+              id: 'field_block:node:article:field_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: wide
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          c0883c29-ed8b-4197-8f0f-22ef6dfa61ad:
+            uuid: c0883c29-ed8b-4197-8f0f-22ef6dfa61ad
+            region: content
+            configuration:
+              id: 'field_block:node:article:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          df1a2b9b-b64e-41d4-b41e-9818b2b3ceec:
+            uuid: df1a2b9b-b64e-41d4-b41e-9818b2b3ceec
+            region: content
+            configuration:
+              id: 'field_block:node:article:field_tags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          37345c91-4841-42f5-a68f-2d2d8834e209:
+            uuid: 37345c91-4841-42f5-a68f-2d2d8834e209
+            region: content
+            configuration:
+              id: 'extra_field_block:node:article:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 3
+            additional: {  }
+          0c3ddd19-38e6-4ee3-8a01-55aca7d13bac:
+            uuid: 0c3ddd19-38e6-4ee3-8a01-55aca7d13bac
+            region: content
+            configuration:
+              id: 'field_block:node:article:comment'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: comment_default
+                label: above
+                settings:
+                  view_mode: default
+                  pager_id: 0
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+        third_party_settings: {  }
 _core:
   default_config_hash: 7fb0j9HnIXfP9ndewzgPPzzeX_SV532wuYpkscrCMCk
 id: node.article.default
@@ -42,8 +136,8 @@ content:
     type: image
     label: hidden
     settings:
-      image_style: wide
       image_link: ''
+      image_style: wide
       image_loading:
         attribute: lazy
     third_party_settings: {  }
@@ -62,4 +156,5 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

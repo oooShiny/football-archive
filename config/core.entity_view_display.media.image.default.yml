@@ -7,7 +7,43 @@ dependencies:
     - image.style.large
     - media.type.image
   module:
+    - field_layout
     - image
+    - layout_builder
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  layout_builder:
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          635de620-47c6-4f03-81a8-5c5f70ffc8e0:
+            uuid: 635de620-47c6-4f03-81a8-5c5f70ffc8e0
+            region: content
+            configuration:
+              id: 'field_block:media:image:field_media_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: visually_hidden
+                settings:
+                  image_link: ''
+                  image_style: large
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
 _core:
   default_config_hash: 73xaTNkI5J6sfFcBmNYeuk070X3mQS_iwwWaPYyfG2M
 id: media.image.default
@@ -19,8 +55,8 @@ content:
     type: image
     label: visually_hidden
     settings:
-      image_style: large
       image_link: ''
+      image_style: large
       image_loading:
         attribute: lazy
     third_party_settings: {  }
@@ -29,5 +65,6 @@ content:
 hidden:
   created: true
   name: true
+  search_api_excerpt: true
   thumbnail: true
   uid: true

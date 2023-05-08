@@ -20,6 +20,8 @@ dependencies:
   module:
     - datetime
     - field_group
+    - field_layout
+    - layout_discovery
     - path
     - text
 third_party_settings:
@@ -74,6 +76,10 @@ third_party_settings:
         open: true
         description: ''
         required_fields: true
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.game_video.default
 targetEntityType: node
 bundle: game_video

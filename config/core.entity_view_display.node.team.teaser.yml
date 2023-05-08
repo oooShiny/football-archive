@@ -8,7 +8,34 @@ dependencies:
     - field.field.node.team.field_team_name_history
     - node.type.team
   module:
+    - field_layout
+    - layout_builder
+    - layout_discovery
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  layout_builder:
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          4d0c94bf-1802-4808-8980-736c7e9e8579:
+            uuid: 4d0c94bf-1802-4808-8980-736c7e9e8579
+            region: content
+            configuration:
+              id: 'extra_field_block:node:team:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
 id: node.team.teaser
 targetEntityType: node
 bundle: team
@@ -22,3 +49,4 @@ content:
 hidden:
   field_pfr_id: true
   field_team_name_history: true
+  search_api_excerpt: true

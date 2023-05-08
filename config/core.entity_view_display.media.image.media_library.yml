@@ -8,7 +8,43 @@ dependencies:
     - image.style.medium
     - media.type.image
   module:
+    - field_layout
     - image
+    - layout_builder
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  layout_builder:
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          fe8969b2-02b1-403f-abfd-96ebe17e91aa:
+            uuid: fe8969b2-02b1-403f-abfd-96ebe17e91aa
+            region: content
+            configuration:
+              id: 'field_block:media:image:thumbnail'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: medium
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
 _core:
   default_config_hash: ILLWu5KFvbsX6J7sh2Itd4w8-lBBRhR_H8ZrmQiN2yo
 id: media.image.media_library
@@ -20,8 +56,8 @@ content:
     type: image
     label: hidden
     settings:
-      image_style: medium
       image_link: ''
+      image_style: medium
       image_loading:
         attribute: lazy
     third_party_settings: {  }
@@ -31,4 +67,5 @@ hidden:
   created: true
   field_media_image: true
   name: true
+  search_api_excerpt: true
   uid: true

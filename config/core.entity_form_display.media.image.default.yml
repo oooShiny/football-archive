@@ -7,8 +7,15 @@ dependencies:
     - image.style.thumbnail
     - media.type.image
   module:
+    - field_layout
     - image
+    - layout_discovery
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 _core:
   default_config_hash: JSY4-JPyNZBiYYo6imdRYF6_SdtWQexPndrLvn3-vw4
 id: media.image.default

@@ -1,0 +1,23 @@
+uuid: 07fb4ca5-205f-41b9-b87e-7e7e59b480b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_season
+    - node.type.non_game_video
+id: node.non_game_video.field_season
+field_name: field_season
+entity_type: node
+bundle: non_game_video
+label: Season
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
