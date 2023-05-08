@@ -9,7 +9,6 @@ dependencies:
   module:
     - field_layout
     - layout_builder
-    - layout_discovery
     - user
 third_party_settings:
   field_layout:
@@ -18,14 +17,15 @@ third_party_settings:
       label: ''
   layout_builder:
     enabled: true
+    allow_custom: false
     sections:
       -
         layout_id: layout_onecol
         layout_settings:
           label: ''
         components:
-          810fa632-c0a5-4d47-8c91-59eafd0a68fb:
-            uuid: 810fa632-c0a5-4d47-8c91-59eafd0a68fb
+          22f9a75f-4cb0-4b11-858f-1102a29af9f0:
+            uuid: 22f9a75f-4cb0-4b11-858f-1102a29af9f0
             region: content
             configuration:
               id: 'extra_field_block:node:team:links'
@@ -34,41 +34,18 @@ third_party_settings:
                 entity: layout_builder.entity
             weight: 0
             additional: {  }
-          04f0e886-a7fa-471a-99fc-cd6f6446078f:
-            uuid: 04f0e886-a7fa-471a-99fc-cd6f6446078f
-            region: content
-            configuration:
-              id: 'field_block:node:team:field_pfr_id'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: hidden
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
         third_party_settings: {  }
 id: node.team.default
 targetEntityType: node
 bundle: team
 mode: default
 content:
-  field_pfr_id:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
 hidden:
+  field_pfr_id: true
   field_team_name_history: true
   search_api_excerpt: true
