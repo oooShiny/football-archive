@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.game_video.field_away_team
     - field.field.node.game_video.field_date
     - field.field.node.game_video.field_home_team
+    - field.field.node.game_video.field_original_video_title
     - field.field.node.game_video.field_season
     - field.field.node.game_video.field_teams_involved
     - field.field.node.game_video.field_total_watch_time
@@ -21,7 +22,6 @@ dependencies:
     - datetime
     - field_layout
     - layout_builder
-    - layout_discovery
     - options
     - text
     - user
@@ -52,7 +52,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 12
+    weight: 11
     region: content
   field_away_team:
     type: entity_reference_label
@@ -60,7 +60,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 10
+    weight: 9
     region: content
   field_date:
     type: datetime_default
@@ -77,7 +77,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 9
+    weight: 8
     region: content
   field_season:
     type: number_integer
@@ -97,7 +97,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 13
+    weight: 12
     region: content
   field_video_collection_id:
     type: string
@@ -131,7 +131,7 @@ content:
       thousand_separator: ','
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 11
+    weight: 10
     region: content
   field_week:
     type: list_default
@@ -146,5 +146,6 @@ content:
     weight: 0
     region: content
 hidden:
+  field_original_video_title: true
   field_teams_involved: true
   search_api_excerpt: true

@@ -1,0 +1,9 @@
+uuid: 197137d8-55f0-4f87-99be-df596d861cc8
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: VKGaK6aAQw5jp7orRa3GP-fKx3QBlIklbaIniix4MAk
+id: administrative
+label: Administrative
+description: 'Drupal administrative dialogs'

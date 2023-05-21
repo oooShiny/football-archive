@@ -1,0 +1,78 @@
+
+{% for season, data in all_games %}
+    <h2 onclick="toggleFilters('season-{{ season }}'); toggleArrow(this);" class="text-xl bg-gray-500 text-gray-50 font-light p-2 accordion-{% if data.vids == 0 %}closed{% else %}open{% endif %}">
+        {{ season }} ({{ data.vids }} Videos)
+    </h2>
+    <div id="season-{{ season }}" class="{% if data.vids == 0 %}hidden lg:hidden{% endif %} lg:flex lg:flex-wrap lg:justify-evenly">
+    {% for week, games in data.games %}
+        <div class="lg:w-1/2" >
+            <h3 class="text-l bg-gray-500 text-gray-50 font-light p-2" onclick="toggleFilters('season-{{ season }}--week-{{ week }}')">
+                {% if week not in ['Wildcard', 'Division', 'Conference', 'Superbowl'] %}
+                    Week {{ week }}
+                {% else %}
+                    {{ week }}
+                {% endif %}
+            </h3>
+            <div id="season-{{ season }}--week-{{ week }}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="w-1/4">Away</th>
+                            <th class="w-1/4" colspan="2">Score</th>
+                            <th class="w-1/4">Home</th>
+                            <th class="w-1/4"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for game in games %}
+                        {% if game.vid is not null %}
+                        <tr class="bg-blue-100">
+                        {% else %}
+                        <tr class="text-gray-400">
+                        {% endif %}
+                            <td>{{ game.away_team }}</td>
+                            <td>{{ game.away_score }}</td>
+                            <td>{{ game.home_score }}</td>
+                            <td>{{ game.home_team }}</td>
+                            {% if game.vid is not null %}
+                                <td><a class="text-blue-600 underline" href="/node/{{ game.vid }}">Watch</a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endfor %}
+
+<script type="application/javascript">
+    function toggleFilters(id) {
+        const x = document.getElementById(id);
+        if (x.classList.contains('hidden')) {
+            x.classList.remove('hidden');
+            x.classList.remove('lg:hidden');
+            x.classList.add('block');
+            x.classList.add('lg:block');
+        } else {
+            x.classList.remove('block');
+            x.classList.remove('lg:block');
+            x.classList.add('hidden');
+            x.classList.add('lg:hidden');
+        }
+    }
+</script>
+
+<script type="application/javascript">
+    function toggleArrow(x) {
+        if (x.classList.contains('accordion-closed')) {
+            x.classList.remove('accordion-closed');
+            x.classList.add('accordion-open');
+        }
+        else {
+            x.classList.remove('accordion-open');
+            x.classList.add('accordion-closed');
+        }
+    }
+</script>

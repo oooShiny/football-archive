@@ -1,9 +1,11 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
+  admin_dialogs: 0
   admin_toolbar: 0
   admin_toolbar_links_access_filter: 0
   admin_toolbar_tools: 0
+  all_games: 0
   auto_entitylabel: 0
   automated_cron: 0
   big_pipe: 0

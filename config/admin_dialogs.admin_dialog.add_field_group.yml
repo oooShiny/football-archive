@@ -1,0 +1,15 @@
+uuid: 60194e83-0d64-48f0-835c-3fb255e09b49
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: iuvBTwd23eXDyKZNHfqgQXIWOz5knnZ9rRRBAey9dHY
+id: add_field_group
+label: 'Add Field Group'
+type: actions
+dialog_group: contrib_modules
+dialog_type: modal
+dialog_width: '550'
+selection_criteria:
+  routes:
+    - 'field_group_add_*'

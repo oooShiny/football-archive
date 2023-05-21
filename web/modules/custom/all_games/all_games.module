@@ -1,0 +1,11 @@
+<?php
+
+function all_games_theme($existing, $type, $theme, $path) {
+  return [
+    'all_games_list' => [
+      'variables' => [
+        'all_games' => [],
+      ]
+    ]
+  ];
+}

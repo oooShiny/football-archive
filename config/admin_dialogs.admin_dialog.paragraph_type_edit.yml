@@ -1,0 +1,16 @@
+uuid: 537d6ab7-7958-4442-9f40-383c69393b2e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 6yML39QDZ8sGLzFayXZXINkMCDms7nk3pgPZUrqc3IU
+id: paragraph_type_edit
+label: 'Paragraph Type Edit'
+type: ops
+dialog_group: contrib_modules
+dialog_type: modal
+dialog_width: '550'
+selection_criteria:
+  entity_type: paragraphs_type
+  bundles: {  }
+  key: edit

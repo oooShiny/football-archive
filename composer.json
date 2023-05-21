@@ -34,7 +34,8 @@
         "drupal/paragraphs": "^1.15",
         "drupal/search_api": "^1.29",
         "drupal/facets": "^2.0",
-        "drupal/facets_block": "^2.0@beta"
+        "drupal/facets_block": "^2.0@beta",
+        "drupal/admin_dialogs": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

@@ -1,0 +1,7 @@
+all_games.listing:
+  path: '/all-games'
+  defaults:
+    _controller: '\Drupal\all_games\Controller\ListingController::content'
+    _title: 'All Games Listing'
+  requirements:
+    _permission: 'access content'

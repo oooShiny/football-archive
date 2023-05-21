@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.game_video.field_away_team
     - field.field.node.game_video.field_date
     - field.field.node.game_video.field_home_team
+    - field.field.node.game_video.field_original_video_title
     - field.field.node.game_video.field_season
     - field.field.node.game_video.field_teams_involved
     - field.field.node.game_video.field_total_watch_time
@@ -21,7 +22,6 @@ dependencies:
   module:
     - field_layout
     - layout_builder
-    - layout_discovery
     - options
     - user
 third_party_settings:
@@ -87,6 +87,7 @@ hidden:
   body: true
   field_average_watch_time: true
   field_date: true
+  field_original_video_title: true
   field_teams_involved: true
   field_total_watch_time: true
   field_video_collection_id: true

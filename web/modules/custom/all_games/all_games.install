@@ -1,0 +1,102 @@
+<?php
+
+/**
+* @file
+* Install, update and uninstall functions for the Ban module.
+*/
+
+/**
+ * Implements hook_schema().
+ */
+function all_games_schema() {
+  $schema['all_games'] = [
+    'description' => 'A list of every NFL game.',
+    'fields' => [
+      'id' => [
+        'description' => 'game id',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'schedule_date' => [
+        'description' => 'The Unix timestamp of the game date.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => FALSE,
+        'default' => 0,
+      ],
+      'schedule_season' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'schedule_week' => [
+        'type' => 'varchar_ascii',
+        'not null' => TRUE,
+        'default' => '',
+        'length' => 128,
+      ],
+      'schedule_playoff' => [
+        'description' => 'Boolean for if this is a playoff game.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'small',
+      ],
+      'team_home' => [
+        'type' => 'varchar_ascii',
+        'not null' => TRUE,
+        'default' => '',
+        'length' => 128,
+      ],
+      'score_home' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'score_away' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'team_away' => [
+        'type' => 'varchar_ascii',
+        'not null' => TRUE,
+        'default' => '',
+        'length' => 128,
+      ],
+
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function all_games_install($is_syncing) {
+  $module_path = \Drupal::service('extension.path.resolver')->getPath('module', 'all_games');
+  $file = fopen($module_path . '/all_nfl_games.csv', "r");
+  $id = 0;
+  while (!feof($file)) {
+    $game = fgetcsv($file);
+    // Skip the first row and any empty rows.
+    if ($id > 0 && !empty($game[0])) {
+      \Drupal::database()->insert('all_games')
+        ->fields([
+          'id' => $id,
+          'schedule_date' => $game[0],
+          'schedule_season'=> $game[1],
+          'schedule_week' => $game[2],
+          'schedule_playoff' => $game[3],
+          'team_home' => $game[4],
+          'score_home' => $game[5],
+          'score_away' => $game[6],
+          'team_away' => $game[7],
+        ])
+        ->execute();
+    }
+    $id++;
+  }
+
+  fclose($file);
+  \Drupal::messenger()
+    ->addMessage('All Games installed and games have been imported.');
+}

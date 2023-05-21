@@ -1,0 +1,16 @@
+uuid: 0d3089f2-0142-4719-b550-f2c09a74875a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: H1dCzn42zC_zJkzjiXEyw-u60-YZShjlJVzQkbeWz0o
+id: paths
+label: Paths
+type: paths
+dialog_group: administrative
+dialog_type: off_canvas
+dialog_width: '650'
+selection_criteria:
+  paths:
+    - '*/block/add*'
+    - '*/admin/people/create*'

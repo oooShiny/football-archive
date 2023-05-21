@@ -1,0 +1,19 @@
+uuid: ad5e8e9f-21db-40c8-ad5b-7c3d774d98b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_original_video_title
+    - node.type.game_video
+id: node.game_video.field_original_video_title
+field_name: field_original_video_title
+entity_type: node
+bundle: game_video
+label: 'Original Video Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

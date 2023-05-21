@@ -3,6 +3,14 @@
  * Visual styles for icons.
  */
 
+.accordion-closed:after {
+  content: "▼";
+}
+
+.accordion-open:after {
+  content: "▲";
+}
+
 .icon-help {
   padding: 1px 0 1px 20px; /* LTR */
   background: url(../../images/icons/help.png) 0 50% no-repeat; /* LTR */

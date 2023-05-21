@@ -1,0 +1,15 @@
+uuid: 8a922666-6529-4185-971b-c832df34f052
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 4ncCfCprH4oy7DgYzPboeGI33luOMzGogq1MaQyXw3s
+id: add_user
+label: 'Add User'
+type: actions
+dialog_group: administrative
+dialog_type: off_canvas
+dialog_width: '650'
+selection_criteria:
+  routes:
+    - user_admin_create

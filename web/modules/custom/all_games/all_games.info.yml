@@ -1,0 +1,5 @@
+name: All Games Module
+description: Provides a list of every NFL game in the system.
+package: Football
+type: module
+core_version_requirement: ^9 || ^10
