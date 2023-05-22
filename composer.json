@@ -73,7 +73,12 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
-        "enable-patching": true
+        "enable-patching": true,
+        "patches": {
+            "drupal/core": {
+                "Html::cleanCssIdentifier Strips Valid Escaped Characters": "https://www.drupal.org/files/issues/2022-07-28/2916377-40.patch"
+            }
+        }
     },
     "autoload": {
         "classmap": ["upstream-configuration/scripts/ComposerScripts.php"]
