@@ -1,5 +1,25 @@
-
+<h1 class="font-light text-2xl">Every NFL Game List</h1>
+<p class="py-3">
+    On this page you'll find every game in NFL history, ordered by
+    season and week. If there is video of a game it will be highlighted
+    in the list with a link to watch the video.
+</p>
+<div class="border bg-gray-50 p-2">
+    <h2 class="font-light text-lg">Table of Contents</h2>
+    <ul class="flex gap-2">
+        <div>
+        {% for season, data in all_games %}
+            <li><a href="#season-{{ season }}-anchor" class="text-sm text-blue-600 underline">{{ season }} ({{ data.vids }})</a></li>
+            {% if loop.index is divisible by(5) %}
+            </div><div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </ul>
+</div>
+<div class="lg:w-3/4">
 {% for season, data in all_games %}
+    <a id="season-{{ season }}-anchor"></a>
     <h2 onclick="toggleFilters('season-{{ season }}'); toggleArrow(this);" class="text-xl bg-gray-500 text-gray-50 font-light p-2 accordion-{% if data.vids == 0 %}closed{% else %}open{% endif %}">
         {{ season }} ({{ data.vids }} Videos)
     </h2>
@@ -46,7 +66,7 @@
     {% endfor %}
     </div>
 {% endfor %}
-
+</div>
 <script type="application/javascript">
     function toggleFilters(id) {
         const x = document.getElementById(id);
