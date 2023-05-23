@@ -32,12 +32,17 @@
     'field--type-' ~ field_type|clean_class,
     'field--label-' ~ label_display,
     'comment-wrapper',
+    'py-2',
+    'border-t',
+    'border-t-gray-400'
   ]
 %}
 {%
   set title_classes = [
     'title',
     label_display == 'visually_hidden' ? 'visually-hidden',
+    'text-2xl',
+    'font-light'
   ]
 %}
 <section{{ attributes.addClass(classes) }}>

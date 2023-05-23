@@ -1,8 +1,12 @@
-<h1 class="flex gap-1 text-2xl font-light"><a class="underline text-blue-500"href="/search/videos?f[0]=season:{{ season }}">{{ content.field_season }}</a> {{ content.field_week }}</h1>
-<h2 class="flex gap-1 text-xl font-light">
-    <span class="underline text-blue-500">{{ content.field_home_team }}</span>
-    @
-    <span class="underline text-blue-500">{{ content.field_away_team }}</span></h2>
+<div class="py-2">
+    <h1 class="flex gap-1 text-2xl font-light"><a class="underline text-blue-500"href="/search/videos?f[0]=season:{{ season }}">{{ content.field_season }}</a> {{ content.field_week }}</h1>
+    <h2 class="flex gap-1 text-xl font-light">
+        <span class="underline text-blue-500">{{ content.field_home_team }}</span>
+        @
+        <span class="underline text-blue-500">{{ content.field_away_team }}</span>
+    </h2>
+</div>
+
 <div style="position: relative; padding-top: 56.25%;">
     <iframe src="https://iframe.mediadelivery.net/embed/{{ library_id }}/{{ video_id }}"
             loading="lazy" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;"
@@ -10,7 +14,7 @@
     </iframe>
 </div>
 
-<div>
+<div class="py-2">
     <ul class="lg:flex lg:justify-between bg-gray-400 text-gray-50">
         <li class="p-2"><span class="font-bold">Video length:</span> {{ video_time }}</li>
         <li class="p-2"><span class="font-bold">Views:</span> {{ video.views }}</li>
@@ -19,3 +23,18 @@
     </ul>
 </div>
 
+<div class="py-2">
+{{ content|without(
+    'field_home_team',
+    'field_away_team',
+    'field_average_watch_time',
+    'field_total_watch_time',
+    'field_views',
+    'field_date',
+    'field_season',
+    'field_week',
+    'field_video_length',
+    'field_video_id',
+    'field_video_collection_id'
+) }}
+</div>

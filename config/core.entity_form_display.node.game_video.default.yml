@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.game_video.body
     - field.field.node.game_video.field_average_watch_time
     - field.field.node.game_video.field_away_team
+    - field.field.node.game_video.field_comments
     - field.field.node.game_video.field_date
     - field.field.node.game_video.field_home_team
     - field.field.node.game_video.field_original_video_title
@@ -19,6 +20,7 @@ dependencies:
     - field.field.node.game_video.field_week
     - node.type.game_video
   module:
+    - comment
     - datetime
     - field_group
     - field_layout
@@ -118,6 +120,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_comments:
+    type: comment_default
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_date:
     type: datetime_default

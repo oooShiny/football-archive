@@ -9,6 +9,7 @@ dependencies:
     - contact
     - filter
     - media
+    - rate
     - shortcut
     - system
 _core:
@@ -22,6 +23,8 @@ permissions:
   - 'access content'
   - 'access shortcuts'
   - 'access site-wide contact form'
+  - 'cast rate vote on node of game_video'
+  - 'cast rate vote on node of non_game_video'
   - 'post comments'
   - 'skip comment approval'
   - 'use text format basic_html'

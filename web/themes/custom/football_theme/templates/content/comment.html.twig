@@ -74,6 +74,9 @@
     status != 'published' ? status,
     comment.owner.anonymous ? 'by-anonymous',
     author_id and author_id == commented_entity.getOwnerId() ? 'by-' ~ commented_entity.getEntityTypeId() ~ '-author',
+    'border',
+    'border-gray-400',
+    'p-2'
   ]
 %}
 <article{{ attributes.addClass(classes) }}>
@@ -103,7 +106,7 @@
   <div{{ content_attributes.addClass('content') }}>
     {% if title %}
       {{ title_prefix }}
-      <h3{{ title_attributes }}>{{ title }}</h3>
+{#      <h3{{ title_attributes }}>{{ title }}</h3>#}
       {{ title_suffix }}
     {% endif %}
     {{ content }}
