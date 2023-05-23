@@ -6,10 +6,13 @@ dependencies:
     - field.field.node.team.field_pfr_id
     - field.field.node.team.field_team_name_history
     - node.type.team
+    - views.view.team_game_videos
   module:
     - field_layout
     - layout_builder
+    - layout_discovery
     - user
+    - views
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -32,6 +35,46 @@ third_party_settings:
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Games
+          context_mapping: {  }
+        components:
+          6dca6d89-bc80-4708-993a-685bdcbfdb79:
+            uuid: 6dca6d89-bc80-4708-993a-685bdcbfdb79
+            region: content
+            configuration:
+              id: 'views_block:team_game_videos-block_1'
+              label: 'Team Game Videos'
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: 'Team Game Videos'
+              items_per_page: none
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Features
+          context_mapping: {  }
+        components:
+          2acc2c52-c8dc-4d5f-8816-622387297472:
+            uuid: 2acc2c52-c8dc-4d5f-8816-622387297472
+            region: content
+            configuration:
+              id: 'views_block:team_game_videos-block_2'
+              label: 'Team Feature Videos'
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: 'Team Feature Videos'
+              items_per_page: none
             weight: 0
             additional: {  }
         third_party_settings: {  }
