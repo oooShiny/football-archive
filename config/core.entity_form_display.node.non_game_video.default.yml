@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.non_game_video.body
     - field.field.node.non_game_video.field_average_watch_time
+    - field.field.node.non_game_video.field_comments
     - field.field.node.non_game_video.field_season
     - field.field.node.non_game_video.field_team_s_involved
     - field.field.node.non_game_video.field_total_watch_time
@@ -15,6 +16,7 @@ dependencies:
     - field.field.node.non_game_video.field_views
     - node.type.non_game_video
   module:
+    - comment
     - field_layout
     - layout_discovery
     - path
@@ -51,6 +53,12 @@ content:
     region: content
     settings:
       placeholder: ''
+    third_party_settings: {  }
+  field_comments:
+    type: comment_default
+    weight: 133
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_season:
     type: number

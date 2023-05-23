@@ -5,7 +5,7 @@
     </iframe>
 </div>
 
-<div>
+<div class="py-2">
     <ul class="lg:flex lg:justify-between bg-gray-400 text-gray-50">
         <li class="p-2"><span class="font-bold">Video length:</span> {{ video_time }}</li>
         <li class="p-2"><span class="font-bold">Views:</span> {{ video.views }}</li>
@@ -14,3 +14,16 @@
     </ul>
 </div>
 
+<div class="py-2">
+    {{ content|without(
+        'field_average_watch_time',
+        'field_total_watch_time',
+        'field_views',
+        'field_video_category',
+        'field_season',
+        'field_team_s_involved',
+        'field_video_length',
+        'field_video_id',
+        'field_video_collection_id'
+    ) }}
+</div>
