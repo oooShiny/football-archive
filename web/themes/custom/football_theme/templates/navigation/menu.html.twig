@@ -30,9 +30,9 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('menu inline-flex gap-2') }}>
+      <ul{{ attributes.addClass('menu inline-flex gap-4') }}>
     {% else %}
-      <ul class="menu inline-flex gap-2">
+      <ul class="menu inline-flex gap-4">
     {% endif %}
     {% for item in items %}
       {%
