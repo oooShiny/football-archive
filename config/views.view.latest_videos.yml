@@ -176,7 +176,7 @@ display:
           alignment: horizontal
           row_class_custom: 'flex gap-2'
           row_class_default: false
-          col_class_custom: w-1/4
+          col_class_custom: 'flex flex-wrap lg:flex-nowrap gap-2'
           col_class_default: false
       row:
         type: 'entity:node'
