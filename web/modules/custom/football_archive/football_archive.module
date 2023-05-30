@@ -24,6 +24,10 @@ function football_archive_entity_presave(EntityInterface $entity) {
  * Implements hook_cron().
  */
 function football_archive_cron() {
+  // Bunny.net variables.
+  $library = '125197';
+  $access_key = '7b4d7df9-f924-4cf7-835262219e9c-f51b-4d5e';
+
   // Get all video nodes, organize them by video ID.
   $video_nodes = football_archive_get_video_nodes();
   // Get all team names -> node IDs.
@@ -37,10 +41,10 @@ function football_archive_cron() {
   try {
     // Get all folders in the library.
       $response = $client->get(
-      'https://video.bunnycdn.com/library/114078/collections?page=1&itemsPerPage=100&orderBy=date',
+      'https://video.bunnycdn.com/library/'.$library.'/collections?page=1&itemsPerPage=100&orderBy=date',
       [
         'headers' => [
-          'AccessKey' => 'afcf483b-fda4-4b21-a7aac9ff46e6-7692-46a2',
+          'AccessKey' => $access_key,
           'accept' => 'application/json',
         ]
       ]
@@ -57,10 +61,10 @@ function football_archive_cron() {
   try {
     // Get all videos in the library.
     $response = $client->get(
-      'https://video.bunnycdn.com/library/114078/videos?page=1&itemsPerPage=500&orderBy=date',
+      'https://video.bunnycdn.com/library/'.$library.'/videos?page=1&itemsPerPage=500&orderBy=date',
       [
         'headers' => [
-          'AccessKey' => 'afcf483b-fda4-4b21-a7aac9ff46e6-7692-46a2',
+          'AccessKey' => $access_key,
           'accept' => 'application/json',
         ]
       ]
