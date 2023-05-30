@@ -31,7 +31,7 @@ function football_theme_preprocess_node(&$variables) {
   $node = $variables['node'];
   // Clean up video stat information for twig template.
   if (in_array($node->bundle(), ['game_video', 'non_game_video'])) {
-    $variables['library_id'] = '114078';
+    $variables['library_id'] = '125197';
     $variables['video_id'] = $node->get('field_video_id')->value;
     $variables['video_time'] = gmdate('H:i:s', $node->get('field_video_length')->value);
     $variables['video'] = [
