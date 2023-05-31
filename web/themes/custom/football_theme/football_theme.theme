@@ -44,6 +44,7 @@ function football_theme_preprocess_node(&$variables) {
     if ($node->bundle() == 'game_video') {
       $variables['season'] = $node->get('field_season')->value;
       $variables['week'] = $node->get('field_week')->value;
+      $variables['pfr_url'] = $node->get('field_pfr_game_link')->value;
     }
   }
 

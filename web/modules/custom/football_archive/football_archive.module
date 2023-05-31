@@ -11,12 +11,26 @@ use GuzzleHttp\Exception\GuzzleException;
  * Implements hook_entity_presave().
  */
 function football_archive_entity_presave(EntityInterface $entity) {
-  if ($entity->bundle() == 'game_video' && $entity->field_teams_involved->isEmpty()) {
-    $home = $entity->field_home_team->target_id;
-    $away = $entity->field_away_team->target_id;
-    $field_teams_involved[] = ['target_id' => $home];
-    $field_teams_involved[] = ['target_id' => $away];
-    $entity->set('field_teams_involved', $field_teams_involved);
+  if ($entity->bundle() == 'game_video') {
+    if ($entity->field_teams_involved->isEmpty()) {
+      $home = $entity->field_home_team->target_id;
+      $away = $entity->field_away_team->target_id;
+      $field_teams_involved[] = ['target_id' => $home];
+      $field_teams_involved[] = ['target_id' => $away];
+      $entity->set('field_teams_involved', $field_teams_involved);
+    }
+
+    // Set PFR link field.
+    // https://www.pro-football-reference.com/boxscores/200509180car.htm
+    if ($entity->field_pfr_game_link->isEmpty()) {
+      $away_team = $entity->field_away_team->entity;
+      $away = $away_team->get('field_pfr_id')->value;
+      $game_date = $entity->field_date->value;
+      $date = str_replace('-', '',$entity->field_date->value);
+      $game_id = $date . '0' . strtolower($away);
+      $pfr_link = 'https://www.pro-football-reference.com/boxscores/' . $game_id . '.htm';
+      $entity->set('field_pfr_game_link', $pfr_link);
+    }
   }
 }
 
@@ -34,6 +48,8 @@ function football_archive_cron() {
   $team_names = football_archive_get_team_names();
   // Get all video categories for non-game videos.
   $video_categories = football_archive_get_video_categories();
+  // Get all NFL games.
+  $all_games = football_archive_get_all_games();
 
   // Fetch data from bunny.net.
   $client = new Client();
@@ -93,7 +109,9 @@ function football_archive_cron() {
               ->getFieldStorageDefinition()
               ->getSettings()['allowed_values'];
             $week = array_search($w, $week_values);
-            // @todo: Get team taxonomies to set home/away teams.
+
+            $timestamp = $all_games[$season][$week][trim($teams[1])]['game_date'];
+            $date = date('Y-m-d', $timestamp);
             $node = Node::create([
               'type' => 'game_video',
               'field_original_video_title' => $video['title'],
@@ -101,6 +119,7 @@ function football_archive_cron() {
               'field_week' => $week,
               'field_home_team' => $home,
               'field_away_team' => $away,
+              'field_date' => $date,
             ]);
           }
           else {
@@ -203,4 +222,20 @@ function football_archive_get_video_categories() {
     $video_categories[$term->getName()] = $term->id();
   }
   return $video_categories;
+}
+
+
+/**
+ * Get all games from custom table.
+ */
+function football_archive_get_all_games() {
+  $database = \Drupal::database();
+  $query = $database->query("SELECT * FROM {all_games}");
+  $games = [];
+  foreach ($query->fetchAllAssoc('id') as $g) {
+    $games[$g->schedule_season][$g->schedule_week][$g->team_home] = [
+      'game_date' => $g->schedule_date,
+    ];
+  }
+  return $games;
 }

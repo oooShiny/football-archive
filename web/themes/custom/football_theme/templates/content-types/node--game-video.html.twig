@@ -6,7 +6,9 @@
         <span class="underline text-blue-500">{{ content.field_away_team }}</span>
     </h2>
 </div>
-
+<div class="py-4">
+    <a class="p-4 bg-green-800 text-gray-100" href="{{ pfr_url }}" target="_blank">View game on PFR</a>
+</div>
 <div style="position: relative; padding-top: 56.25%;">
     <iframe src="https://iframe.mediadelivery.net/embed/{{ library_id }}/{{ video_id }}"
             loading="lazy" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;"
@@ -35,6 +37,7 @@
     'field_week',
     'field_video_length',
     'field_video_id',
-    'field_video_collection_id'
+    'field_video_collection_id',
+    'field_pfr_game_link'
 ) }}
 </div>
