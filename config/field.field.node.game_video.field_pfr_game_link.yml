@@ -1,0 +1,19 @@
+uuid: cb2221ee-0ea4-4e97-a571-82714fca840f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pfr_game_link
+    - node.type.game_video
+id: node.game_video.field_pfr_game_link
+field_name: field_pfr_game_link
+entity_type: node
+bundle: game_video
+label: 'PFR Game Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

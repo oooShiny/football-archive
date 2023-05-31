@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.game_video.field_date
     - field.field.node.game_video.field_home_team
     - field.field.node.game_video.field_original_video_title
+    - field.field.node.game_video.field_pfr_game_link
     - field.field.node.game_video.field_season
     - field.field.node.game_video.field_teams_involved
     - field.field.node.game_video.field_total_watch_time
@@ -90,6 +91,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 7
+    region: content
+  field_pfr_game_link:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 14
     region: content
   field_season:
     type: number_integer
