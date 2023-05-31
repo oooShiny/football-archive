@@ -9,7 +9,7 @@
     <ul class="flex gap-2">
         <div>
         {% for season, data in all_games %}
-            <li><a href="#season-{{ season }}-anchor" class="text-sm text-blue-600 underline">{{ season }} ({{ data.vids }})</a></li>
+            <li><a href="#season-{{ season }}-anchor" class="text-sm underline {% if data.vids == 0 %}text-gray-400{% else %}text-blue-600{% endif %}">{{ season }} ({{ data.vids }})</a></li>
             {% if loop.index is divisible by(5) %}
             </div><div>
             {% endif %}
