@@ -11,7 +11,7 @@ _core:
 id: football_theme_content
 theme: football_theme
 region: content
-weight: -4
+weight: -3
 provider: null
 plugin: system_main_block
 settings:

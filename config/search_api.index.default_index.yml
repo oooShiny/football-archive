@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_season
     - field.storage.node.field_tags
+    - field.storage.node.field_team_s_involved
     - field.storage.node.field_teams_involved
     - field.storage.node.field_week
     - search_api.server.default_server
@@ -103,6 +104,16 @@ field_settings:
     property_path: sticky
     type: boolean
     dependencies:
+      module:
+        - node
+  team_s_involved:
+    label: 'Team(s) Involved » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_team_s_involved:entity:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_team_s_involved
       module:
         - node
   teams_involved:

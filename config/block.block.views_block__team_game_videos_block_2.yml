@@ -12,7 +12,7 @@ dependencies:
 id: views_block__team_game_videos_block_2
 theme: football_theme
 region: content
-weight: 0
+weight: -1
 provider: null
 plugin: 'views_block:team_game_videos-block_2'
 settings:

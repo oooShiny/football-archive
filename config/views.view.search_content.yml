@@ -22,7 +22,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Search Videos'
+      title: 'Search Games'
       pager:
         type: full
         options:
@@ -66,19 +66,6 @@ display:
           id: field_season
           table: search_api_index_default_index
           field: field_season
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: search_api
-          order: DESC
-          expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
-        field_week:
-          id: field_week
-          table: search_api_index_default_index
-          field: field_week
           relationship: none
           group_type: group
           admin_label: ''
@@ -149,6 +136,7 @@ display:
             'entity:node':
               article: search_result
               game_video: teaser
+              non_game_video: teaser
               page: search_result
               team: default
       query:
@@ -185,7 +173,76 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: search/videos
+      path: search/games
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.default_index'
+        - 'search_api_list:default_index'
+      cacheable: false
+  page_2:
+    id: page_2
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      title: 'Search Features'
+      filters:
+        type:
+          id: type
+          table: search_api_index_default_index
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_options
+          operator: or
+          value:
+            non_game_video: non_game_video
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+      path: search/features
     cache_metadata:
       max-age: -1
       contexts:

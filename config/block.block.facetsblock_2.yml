@@ -1,4 +1,4 @@
-uuid: 8e86f11b-0120-4d30-ab05-58bd829150df
+uuid: c4e5a245-e14e-450c-a6c6-c3aa9257ad23
 langcode: en
 status: true
 dependencies:
@@ -7,27 +7,26 @@ dependencies:
     - system
   theme:
     - football_theme
-id: facetsblock
+id: facetsblock_2
 theme: football_theme
 region: content
-weight: -5
+weight: -4
 provider: null
 plugin: facets_block
 settings:
   id: facets_block
-  label: 'Game Search Facets '
-  label_display: '0'
+  label: 'Feature Search Facets'
+  label_display: visible
   provider: facets_block
   show_title: false
   exclude_empty_facets: true
   hide_empty_block: false
   facets_to_include:
-    - 'facet_block:team'
-    - 'facet_block:season'
-    - 'facet_block:week'
+    - 'facet_block:feat_season'
+    - 'facet_block:feat_team'
   add_js_classes: false
 visibility:
   request_path:
     id: request_path
     negate: false
-    pages: /search/games
+    pages: /search/features
