@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+p a {
+    color: rgb(37 99 235);
+    text-decoration-line: underline;
+}

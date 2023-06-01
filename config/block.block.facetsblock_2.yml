@@ -16,7 +16,7 @@ plugin: facets_block
 settings:
   id: facets_block
   label: 'Feature Search Facets'
-  label_display: visible
+  label_display: '0'
   provider: facets_block
   show_title: false
   exclude_empty_facets: true
