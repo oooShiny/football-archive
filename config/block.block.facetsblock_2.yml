@@ -24,6 +24,7 @@ settings:
   facets_to_include:
     - 'facet_block:feat_season'
     - 'facet_block:feat_team'
+    - 'facet_block:tags'
   add_js_classes: false
 visibility:
   request_path:
