@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - node
+    - system
   theme:
     - football_theme
 _core:
@@ -30,3 +31,7 @@ visibility:
       non_game_video: non_game_video
       page: page
       team: team
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/search/*'

@@ -36,7 +36,8 @@
         "drupal/facets": "^2.0",
         "drupal/facets_block": "^2.0@beta",
         "drupal/admin_dialogs": "^1.0",
-        "drupal/rate": "^3.0"
+        "drupal/rate": "^3.0",
+        "drupal/views_jump_menu": "^1.0@RC"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -77,6 +78,7 @@
         "enable-patching": true,
         "patches": {
             "drupal/core": {
+                "2429699: Views Entity Reference Dropdown": "https://www.drupal.org/files/issues/2022-07-25/drupal-views-entity-reference-filter-2429699-491.patch",
                 "Html::cleanCssIdentifier Strips Valid Escaped Characters": "https://www.drupal.org/files/issues/2022-07-28/2916377-40.patch"
             },
             "drupal/rate":  {

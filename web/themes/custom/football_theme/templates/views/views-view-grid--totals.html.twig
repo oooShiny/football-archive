@@ -58,31 +58,23 @@
   <h3>{{ title }}</h3>
 {% endif %}
 <div{{ attributes.addClass(classes) }}>
-  {% if options.alignment == 'horizontal' %}
-    {% for row in items %}
-      <div{{ row.attributes.addClass(row_classes, options.row_class_default ? 'row-' ~ loop.index) }}>
-        {% for column in row.content %}
-          {% if loop.index == 1 %}
-            <a href="/search/games">
-          {% else %}
-            <a href="/search/features">
-          {% endif %}
-            <div{{ column.attributes.addClass(col_classes, options.col_class_default ? 'col-' ~ loop.index) }}>
-              {{- column.content -}} &rsaquo;
-            </div>
-          </a>
-        {% endfor %}
-      </div>
-    {% endfor %}
-  {% else %}
-    {% for column in items %}
-      <div{{ column.attributes.addClass(col_classes, options.col_class_default ? 'col-' ~ loop.index) }}>
-        {% for row in column.content %}
-          <div{{ row.attributes.addClass(row_classes, options.row_class_default ? 'row-' ~ loop.index) }}>
-            {{- row.content -}}
+  {% for row in items %}
+    <div{{ row.attributes.addClass(row_classes, options.row_class_default ? 'row-' ~ loop.index) }}>
+      {% for column in row.content %}
+        {% if loop.index == 1 %}
+          <a href="/search/games">
+        {% else %}
+          <a href="/search/features">
+        {% endif %}
+          <div{{ column.attributes.addClass(col_classes, options.col_class_default ? 'col-' ~ loop.index) }}>
+            {{- column.content -}} &nbsp;&rsaquo;
           </div>
-        {% endfor %}
-      </div>
-    {% endfor %}
-  {% endif %}
+        </a>
+      {% endfor %}
+        <a href="/super-bowl">
+          <div class="views-col p-4 border border-blue-600 text-blue-600 col-1">Super Bowl Content ›
+          </div>
+        </a>
+    </div>
+  {% endfor %}
 </div>

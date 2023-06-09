@@ -129,12 +129,12 @@ function football_archive_cron() {
         }
         // Otherwise, this is a non-game video.
         else {
-
           $node = Node::create([
             'type' => 'non_game_video',
           ]);
 
-          // Figure out video type from the title.
+          // Figure out video tags from the title.
+          // Yearbook videos.
           if (str_contains($video['title'], 'Yearbook')) {
             $node->set('field_video_category', ['target_id' => $video_categories['Yearbook']]);
             $title_parts = explode(' ', $video['title']);
@@ -145,9 +145,14 @@ function football_archive_cron() {
               $node->set('field_season', $title_parts[0]);
             }
           }
-          elseif (str_contains($video['title'], 'NFL Films')) {
+          // NFL Films videos.
+          if (str_contains($video['title'], 'NFL Films')) {
             $node->set('field_video_category', ['target_id' => $video_categories['NFL Films Special']]);
           }
+          if (str_contains($video['title'], 'Super Bowl')) {
+            $node->set('field_video_category', ['target_id' => $video_categories['Super Bowl']]);
+          }
+
           else {
             // Don't pull in videos we haven't categorized yet.
             continue;
