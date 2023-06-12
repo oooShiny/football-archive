@@ -5,9 +5,11 @@ dependencies:
   config:
     - field.field.node.game_video.body
     - field.field.node.game_video.field_average_watch_time
+    - field.field.node.game_video.field_away_score
     - field.field.node.game_video.field_away_team
     - field.field.node.game_video.field_comments
     - field.field.node.game_video.field_date
+    - field.field.node.game_video.field_home_score
     - field.field.node.game_video.field_home_team
     - field.field.node.game_video.field_original_video_title
     - field.field.node.game_video.field_pfr_game_link
@@ -112,6 +114,13 @@ content:
     settings:
       placeholder: ''
     third_party_settings: {  }
+  field_away_score:
+    type: number
+    weight: 33
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_away_team:
     type: entity_reference_autocomplete
     weight: 27
@@ -133,6 +142,13 @@ content:
     weight: 12
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_home_score:
+    type: number
+    weight: 32
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   field_home_team:
     type: entity_reference_autocomplete

@@ -1,0 +1,20 @@
+uuid: a8d8a5f7-da2a-40df-a5a9-a5dd556c2077
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_away_score
+field_name: field_away_score
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -41,39 +41,19 @@ third_party_settings:
       -
         layout_id: layout_onecol
         layout_settings:
-          label: Games
+          label: Timeline
           context_mapping: {  }
         components:
-          6dca6d89-bc80-4708-993a-685bdcbfdb79:
-            uuid: 6dca6d89-bc80-4708-993a-685bdcbfdb79
+          0cc4b2b2-fd52-48d6-a716-9296d1e4fb6e:
+            uuid: 0cc4b2b2-fd52-48d6-a716-9296d1e4fb6e
             region: content
             configuration:
-              id: 'views_block:team_game_videos-block_1'
+              id: 'views_block:team_game_videos-block_3'
               label: 'Team Game Videos'
               label_display: visible
               provider: views
               context_mapping: {  }
               views_label: 'Team Game Videos'
-              items_per_page: none
-            weight: 0
-            additional: {  }
-        third_party_settings: {  }
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: Features
-          context_mapping: {  }
-        components:
-          2acc2c52-c8dc-4d5f-8816-622387297472:
-            uuid: 2acc2c52-c8dc-4d5f-8816-622387297472
-            region: content
-            configuration:
-              id: 'views_block:team_game_videos-block_2'
-              label: 'Team Feature Videos'
-              label_display: visible
-              provider: views
-              context_mapping: {  }
-              views_label: 'Team Feature Videos'
               items_per_page: none
             weight: 0
             additional: {  }

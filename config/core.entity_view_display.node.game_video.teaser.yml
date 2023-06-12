@@ -6,9 +6,11 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.game_video.body
     - field.field.node.game_video.field_average_watch_time
+    - field.field.node.game_video.field_away_score
     - field.field.node.game_video.field_away_team
     - field.field.node.game_video.field_comments
     - field.field.node.game_video.field_date
+    - field.field.node.game_video.field_home_score
     - field.field.node.game_video.field_home_team
     - field.field.node.game_video.field_original_video_title
     - field.field.node.game_video.field_pfr_game_link
@@ -93,8 +95,10 @@ content:
 hidden:
   body: true
   field_average_watch_time: true
+  field_away_score: true
   field_comments: true
   field_date: true
+  field_home_score: true
   field_original_video_title: true
   field_pfr_game_link: true
   field_teams_involved: true

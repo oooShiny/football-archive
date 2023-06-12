@@ -95,3 +95,34 @@
   </div>
 
 </article>
+
+
+<script type="application/javascript">
+  function toggleFilters(id) {
+    const x = document.getElementById(id);
+    if (x.classList.contains('hidden')) {
+      x.classList.remove('hidden');
+      x.classList.remove('lg:hidden');
+      x.classList.add('block');
+      x.classList.add('lg:block');
+    } else {
+      x.classList.remove('block');
+      x.classList.remove('lg:block');
+      x.classList.add('hidden');
+      x.classList.add('lg:hidden');
+    }
+  }
+</script>
+
+<script type="application/javascript">
+  function toggleArrow(x) {
+    if (x.classList.contains('accordion-closed')) {
+      x.classList.remove('accordion-closed');
+      x.classList.add('accordion-open');
+    }
+    else {
+      x.classList.remove('accordion-open');
+      x.classList.add('accordion-closed');
+    }
+  }
+</script>

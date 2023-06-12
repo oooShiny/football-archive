@@ -1,9 +1,10 @@
-uuid: 17263624-58de-42ea-9536-1ee06b592715
+uuid: a510d7e1-6079-45aa-a719-db6bad9e7dbe
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_display.comment.comment.default
+    - core.entity_view_mode.node.list_teaser
     - field.field.node.game_video.body
     - field.field.node.game_video.field_average_watch_time
     - field.field.node.game_video.field_away_score
@@ -39,10 +40,10 @@ third_party_settings:
   layout_builder:
     enabled: false
     allow_custom: false
-id: node.game_video.default
+id: node.game_video.list_teaser
 targetEntityType: node
 bundle: game_video
-mode: default
+mode: list_teaser
 content:
   body:
     type: text_default
@@ -59,15 +60,6 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 10
-    region: content
-  field_away_score:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 16
     region: content
   field_away_team:
     type: entity_reference_label
@@ -94,15 +86,6 @@ content:
       format_type: medium
     third_party_settings: {  }
     weight: 3
-    region: content
-  field_home_score:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 15
     region: content
   field_home_team:
     type: entity_reference_label
@@ -187,6 +170,8 @@ content:
     weight: 12
     region: content
 hidden:
+  field_away_score: true
+  field_home_score: true
   field_original_video_title: true
   field_teams_involved: true
   links: true
