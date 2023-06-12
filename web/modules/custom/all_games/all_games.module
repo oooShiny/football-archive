@@ -6,6 +6,11 @@ function all_games_theme($existing, $type, $theme, $path) {
       'variables' => [
         'all_games' => [],
       ]
-    ]
+    ],
+    'team_timeline' => [
+      'variables' => [
+        'videos' => [],
+      ]
+    ],
   ];
 }

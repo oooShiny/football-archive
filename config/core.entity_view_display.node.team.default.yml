@@ -6,58 +6,20 @@ dependencies:
     - field.field.node.team.field_pfr_id
     - field.field.node.team.field_team_name_history
     - node.type.team
-    - views.view.team_game_videos
   module:
+    - all_games
     - field_layout
     - layout_builder
     - layout_discovery
     - user
-    - views
 third_party_settings:
   field_layout:
     id: layout_onecol
     settings:
       label: ''
   layout_builder:
-    enabled: true
+    enabled: false
     allow_custom: false
-    sections:
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: ''
-        components:
-          22f9a75f-4cb0-4b11-858f-1102a29af9f0:
-            uuid: 22f9a75f-4cb0-4b11-858f-1102a29af9f0
-            region: content
-            configuration:
-              id: 'extra_field_block:node:team:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 0
-            additional: {  }
-        third_party_settings: {  }
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: Timeline
-          context_mapping: {  }
-        components:
-          0cc4b2b2-fd52-48d6-a716-9296d1e4fb6e:
-            uuid: 0cc4b2b2-fd52-48d6-a716-9296d1e4fb6e
-            region: content
-            configuration:
-              id: 'views_block:team_game_videos-block_3'
-              label: 'Team Game Videos'
-              label_display: visible
-              provider: views
-              context_mapping: {  }
-              views_label: 'Team Game Videos'
-              items_per_page: none
-            weight: 0
-            additional: {  }
-        third_party_settings: {  }
 id: node.team.default
 targetEntityType: node
 bundle: team
