@@ -22,14 +22,33 @@ class TeamTimelineBlock extends BlockBase {
 
   public function build() {
     $node = $this->getContextValue('node');
-    $videos = $this->get_videos($node->id());
+    $games = $this->get_games($node->label());
+    $videos = $this->get_videos($node->id(), $games);
     return [
       '#theme' => 'team_timeline',
       '#videos' => $videos,
     ];
   }
 
-  public function get_videos($team) {
+  public function get_games($team) {
+    $games = [];
+    // Get all games from custom table.
+    $database = \Drupal::database();
+    $query = $database->select('all_games', 'g')
+      ->fields('g', ['schedule_season', 'schedule_week', 'team_home', 'team_away']);
+    $orGroup = $query->orConditionGroup()
+      ->condition('g.team_home', $team)
+      ->condition('g.team_away', $team);
+    $query->condition($orGroup);
+    $result = $query->execute();
+    foreach ($result as $g) {
+      $games[$g->schedule_season]['games'][$g->schedule_week] = [
+        'title' => 'Week ' . $g->schedule_week . ': ' . $g->team_away . ' @ ' . $g->team_home,
+      ];
+    }
+    return $games;
+  }
+  public function get_videos($team, $games) {
     $week_order = [
       1 => 'Week 1',
       2 => 'Week 2',
@@ -60,13 +79,13 @@ class TeamTimelineBlock extends BlockBase {
       ->accessCheck(FALSE)
       ->condition('type', ['game_video', 'non_game_video'], 'IN')
       ->execute();
-    $video_nodes = [];
+
     foreach (Node::loadMultiple($nids) as $video) {
       // Check for non-game videos related to the current team.
       if ($video->hasField('field_team_s_involved')) {
         foreach ($video->field_team_s_involved->referencedEntities() as $t) {
           if ($t->id() == $team) {
-            $video_nodes[$video->get('field_season')->value]['features'][] = [
+            $games[$video->get('field_season')->value]['features'][] = [
               'id' => $video->id(),
               'title' => $video->label(),
             ];
@@ -78,16 +97,16 @@ class TeamTimelineBlock extends BlockBase {
         foreach ($video->field_teams_involved->referencedEntities() as $t) {
           if ($t->id() == $team) {
             $week = $video->get('field_week')->value;
-            $video_nodes[$video->get('field_season')->value]['games'][$week] = [
+            $games[$video->get('field_season')->value]['games'][$week] = [
               'id' => $video->id(),
-              'title' => $video->label(),
+              'title' => substr($video->label(), 4),
             ];
-            ksort($video_nodes[$video->get('field_season')->value]['games']);
+            ksort($games[$video->get('field_season')->value]['games']);
           }
         }
       }
     }
-    ksort($video_nodes);
-    return $video_nodes;
+    ksort($games);
+    return $games;
   }
 }

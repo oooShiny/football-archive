@@ -12,7 +12,20 @@
     {# Now list all the games. #}
     <ol class="mt-3 divide-y divide-gray-300">
     {% for game in data['games'] %}
-        <li><img class="h-5 float-left pr-4" src="/themes/custom/football_theme/images/icons/helmet.png" alt=""><a href="/node/{{ game.id }}">{{ game.title }}</a></li>
+        {% if game.id %}
+            {% set css = '' %}
+            {% set text %}
+                <a href="/node/{{ game.id }}">{{ game.title }}</a>
+            {% endset %}
+        {% else %}
+            {% set css = 'text-gray-400' %}
+            {% set text %}
+                <span>{{ game.title }}</span>
+            {% endset %}
+        {% endif %}
+            <li class="{{ css }}"><img class="h-5 float-left pr-4" src="/themes/custom/football_theme/images/icons/helmet.png" alt="">
+                {{ text }}
+            </li>
     {% endfor %}
     </ol>
 
