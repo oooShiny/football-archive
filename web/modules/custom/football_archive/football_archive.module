@@ -22,7 +22,7 @@ function football_archive_entity_presave(EntityInterface $entity) {
 
     // Set PFR link field.
     // https://www.pro-football-reference.com/boxscores/200509180car.htm
-    if ($entity->field_pfr_game_link->isEmpty()) {
+    if ($entity->field_pfr_game_link->isEmpty() && !$entity->field_date->isEmpty()) {
       $away_team = $entity->field_away_team->entity;
       $away = $away_team->get('field_pfr_id')->value;
       $game_date = $entity->field_date->value;
