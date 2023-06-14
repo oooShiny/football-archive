@@ -50,11 +50,12 @@ class TeamTimelineBlock extends BlockBase {
       '16' => 16,
       '17' => 17,
       '18' => 18,
-      'Wildcard' => 19,
-      'Division' => 20,
-      'Conference' => 21,
-      'Superbowl' => 22,
-      'SuperBowl' => 22,
+      '19' => 19,
+      'Wildcard' => 20,
+      'Division' => 21,
+      'Conference' => 22,
+      'Superbowl' => 23,
+      'SuperBowl' => 23,
     ];
     $games = [];
     // Get all games from custom table.
@@ -67,8 +68,21 @@ class TeamTimelineBlock extends BlockBase {
     $query->condition($orGroup);
     $result = $query->execute();
     foreach ($result as $g) {
+      if (is_numeric($g->schedule_week)) {
+        $week = 'Week ' . $g->schedule_week;
+      }
+      else {
+        $rename = [
+          'Wildcard' => 'Wildcard',
+          'Division' => 'Divisional',
+          'Conference' => 'Conference Championship',
+          'Superbowl' => 'Super Bowl',
+          'SuperBowl' => 'Super Bowl',
+        ];
+        $week = $rename[$g->schedule_week];
+      }
       $games[$g->schedule_season]['games'][$week_order[$g->schedule_week]] = [
-        'title' => 'Week ' . $g->schedule_week . ': ' . $g->team_away . ' @ ' . $g->team_home,
+        'title' => $week . ': ' . $g->team_away . ' @ ' . $g->team_home,
       ];
     }
     return $games;
