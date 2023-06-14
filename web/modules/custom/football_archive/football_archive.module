@@ -146,17 +146,19 @@ function football_archive_cron() {
             }
           }
           // NFL Films videos.
-          if (str_contains($video['title'], 'NFL Films')) {
+          elseif (str_contains($video['title'], 'NFL Films')) {
             $node->set('field_video_category', ['target_id' => $video_categories['NFL Films Special']]);
           }
-          if (str_contains($video['title'], 'Super Bowl')) {
-            $node->set('field_video_category', ['target_id' => $video_categories['Super Bowl']]);
-          }
-
           else {
             // Don't pull in videos we haven't categorized yet.
             continue;
           }
+
+          // If any of these mention the Super Bowl, tag it as such.
+          if (str_contains($video['title'], 'Super Bowl')) {
+            $node->set('field_video_category', ['target_id' => $video_categories['Super Bowl']]);
+          }
+
           $node->set('title', $video['title']);
         }
 
