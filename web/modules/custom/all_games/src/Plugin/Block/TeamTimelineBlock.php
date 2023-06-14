@@ -31,6 +31,31 @@ class TeamTimelineBlock extends BlockBase {
   }
 
   public function get_games($team) {
+    $week_order = [
+      '1' => 1,
+      '2' => 2,
+      '3' => 3,
+      '4' => 4,
+      '5' => 5,
+      '6' => 6,
+      '7' => 7,
+      '8' => 8,
+      '9' => 9,
+      '10' => 10,
+      '11' => 11,
+      '12' => 12,
+      '13' => 13,
+      '14' => 14,
+      '15' => 15,
+      '16' => 16,
+      '17' => 17,
+      '18' => 18,
+      'Wildcard' => 19,
+      'Division' => 20,
+      'Conference' => 21,
+      'Superbowl' => 22,
+      'SuperBowl' => 22,
+    ];
     $games = [];
     // Get all games from custom table.
     $database = \Drupal::database();
@@ -42,37 +67,13 @@ class TeamTimelineBlock extends BlockBase {
     $query->condition($orGroup);
     $result = $query->execute();
     foreach ($result as $g) {
-      $games[$g->schedule_season]['games'][$g->schedule_week] = [
+      $games[$g->schedule_season]['games'][$week_order[$g->schedule_week]] = [
         'title' => 'Week ' . $g->schedule_week . ': ' . $g->team_away . ' @ ' . $g->team_home,
       ];
     }
     return $games;
   }
   public function get_videos($team, $games) {
-    $week_order = [
-      1 => 'Week 1',
-      2 => 'Week 2',
-      3 => 'Week 3',
-      4 => 'Week 4',
-      5 => 'Week 5',
-      6 => 'Week 6',
-      7 => 'Week 7',
-      8 => 'Week 8',
-      9 => 'Week 9',
-      11 => 'Week 11',
-      12 => 'Week 12',
-      13 => 'Week 13',
-      14 => 'Week 14',
-      15 => 'Week 15',
-      16 => 'Week 16',
-      17 => 'Week 17',
-      18 => 'Week 18',
-      19 => 'Wildcard',
-      20 => 'Divisional',
-      21 => 'Conference Championship',
-      22 => 'Super Bowl',
-
-    ];
     $nids = \Drupal::entityTypeManager()
       ->getStorage('node')
       ->getQuery()
