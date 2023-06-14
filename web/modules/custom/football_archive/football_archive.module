@@ -171,6 +171,10 @@ function football_archive_cron() {
       // Video already exists, update the video stats.
       else {
         $node = Node::load($video_nodes[$video['guid']]);
+        // Update the title for non games.
+        if ($node->bundle() == 'non_game_video') {
+          $node->set('title', $video['title']);
+        }
         $node->set('field_views', $video['views']);
         $node->set('field_average_watch_time', $video['averageWatchTime']);
         $node->set('field_total_watch_time', $video['totalWatchTime']);
