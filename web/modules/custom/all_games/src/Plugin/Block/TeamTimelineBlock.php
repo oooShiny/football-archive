@@ -93,6 +93,7 @@ class TeamTimelineBlock extends BlockBase {
       ->getQuery()
       ->accessCheck(FALSE)
       ->condition('type', ['game_video', 'non_game_video'], 'IN')
+      ->condition('status', 1)
       ->execute();
 
     foreach (Node::loadMultiple($nids) as $video) {
