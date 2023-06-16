@@ -1,6 +1,6 @@
-<div class="p-2 bg-gray-100 shadow-xl m-8 max-w-xl">
+<div class="p-2 bg-gray-100 shadow-xl m-8 max-w-xl hidden lg:block">
     <h2 class="text-align-center border-b border-gray-300">Season List</h2>
-<ul class="grid grid-flow-col grid-rows-6">
+<ul class="grid grid-flow-col grid-rows-6 gap-x-2">
 {% for season, data in videos %}
     <li><a class="text-blue-600 hover:underline" href="#season-{{ season }}">{{ season }}</a></li>
 {% endfor %}

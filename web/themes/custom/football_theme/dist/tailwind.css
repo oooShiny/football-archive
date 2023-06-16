@@ -677,6 +677,10 @@ video {
   grid-template-rows: repeat(6, minmax(0, 1fr));
 }
 
+.grid-rows-4 {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -707,6 +711,11 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-x-2 {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -986,6 +995,10 @@ p a {
 
   .lg\:w-3\/4 {
     width: 75%;
+  }
+
+  .lg\:grid-rows-6 {
+    grid-template-rows: repeat(6, minmax(0, 1fr));
   }
 
   .lg\:flex-wrap {
