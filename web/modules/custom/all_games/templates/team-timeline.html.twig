@@ -1,11 +1,19 @@
+<div class="p-2 bg-gray-100 shadow-xl m-8 max-w-xl">
+    <h2 class="text-align-center border-b border-gray-300">Season List</h2>
+<ul class="grid grid-flow-col grid-rows-6">
+{% for season, data in videos %}
+    <li><a class="text-blue-600 hover:underline" href="#season-{{ season }}">{{ season }}</a></li>
+{% endfor %}
+</ul>
+</div>
 {% for season, data in videos %}
 <div class="flex">
     <div class="z-20 flex items-center bg-gray-500 shadow-xl w-12 h-12 rounded-full">
-        <h2 class="mx-auto text-lg text-gray-50">
+        <h2 id="season-{{ season }}" class="mx-auto text-lg text-gray-50">
             {{ season }}
         </h2>
     </div>
-    <div class="bg-gray-200 rounded m-2 p-2">
+    <div class="bg-gray-200 rounded m-2 p-2 shadow-xl">
         {# Show the Yearbook video for this season, if there is one. #}
         {% for feature in data['features'] %}
             {% if 'Yearbook' in feature.title %}
@@ -30,7 +38,8 @@
                     <span>{{ game.title }}</span>
                 {% endset %}
             {% endif %}
-                <li class="{{ css }}"><img class="h-5 float-left pr-4" src="/themes/custom/football_theme/images/icons/helmet.png" alt="">
+                <li class="{{ css }}">
+                    <img class="h-5 float-left pr-4" src="/themes/custom/football_theme/images/icons/helmet.png" alt="">
                     {{ text }}
                 </li>
         {% endfor %}
@@ -39,7 +48,10 @@
         {# Show the any other feature videos. #}
         {% for feature in data['features'] %}
             {% if 'Yearbook' not in feature.title %}
-                <div><img class="h-5 float-left pr-4" src="/themes/custom/football_theme/images/icons/film.png" alt=""><a href="/node/{{ feature.id }}">{{ feature.title }}</a></div>
+                <div>
+                    <img class="h-5 float-left pr-4" src="/themes/custom/football_theme/images/icons/film.png" alt="">
+                    <a href="/node/{{ feature.id }}">{{ feature.title }}</a>
+                </div>
             {% endif %}
         {% endfor %}
     </div>
