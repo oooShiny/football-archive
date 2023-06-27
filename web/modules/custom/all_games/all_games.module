@@ -12,5 +12,10 @@ function all_games_theme($existing, $type, $theme, $path) {
         'videos' => [],
       ]
     ],
+    'total_hours' => [
+      'variables' => [
+        'time' => [],
+      ]
+    ],
   ];
 }

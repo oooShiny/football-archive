@@ -1,0 +1,13 @@
+<div class="cols-2 flex flex-col gap-4 justify-center sm:flex-row sm:w-auto w-full">
+{% for type, video in time %}
+    <div class="bg-blue-100 border border-blue-600 p-2">
+        <h2 class="text-center text-xl">{{ type|capitalize }}</h2>
+        <ul>
+            {% for vid_type, seconds in video %}
+                {% set hours = seconds/(60*60) %}
+                <li>{{ vid_type|capitalize }}s: {{ hours|number_format(0) }} hours</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endfor %}
+</div>
