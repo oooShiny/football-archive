@@ -85,6 +85,7 @@ function football_archive_cron() {
         ]
       ]
     );
+    $non_imported = [];
     $result = json_decode($response->getBody(), TRUE);
     foreach ($result['items'] as $video) {
       // Video doesn't exist, so create a new one.
@@ -151,6 +152,7 @@ function football_archive_cron() {
           }
           else {
             // Don't pull in videos we haven't categorized yet.
+            $non_imported[$video['guid']] = $video['title'];
             continue;
           }
 
@@ -183,7 +185,12 @@ function football_archive_cron() {
         $node->save();
       }
     }
-
+    $message = "The following videos were not imported: <ol>";
+    foreach ($non_imported as $id => $title) {
+      $message .= '<li><a target="_blank" href="https://dash.bunny.net/stream/125197/library/video?search='.urlencode($title).'">' . $title . '</a></li>';
+    }
+    $message .= '</ol>';
+    \Drupal::logger('football_archive')->notice($message);
   }
   catch (GuzzleException $e) {
     // log exception
