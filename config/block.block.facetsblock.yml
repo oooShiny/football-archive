@@ -10,7 +10,7 @@ dependencies:
 id: facetsblock
 theme: football_theme
 region: content
-weight: -5
+weight: -6
 provider: null
 plugin: facets_block
 settings:

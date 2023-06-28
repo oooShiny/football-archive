@@ -6,20 +6,85 @@ dependencies:
     - field.field.node.team.field_pfr_id
     - field.field.node.team.field_team_name_history
     - node.type.team
+    - views.view.team_game_videos
   module:
     - all_games
     - field_layout
     - layout_builder
     - layout_discovery
     - user
+    - views
 third_party_settings:
   field_layout:
     id: layout_onecol
     settings:
       label: ''
   layout_builder:
-    enabled: false
+    enabled: true
     allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          680af0a4-6b6a-433e-9b0f-c97e8422e31b:
+            uuid: 680af0a4-6b6a-433e-9b0f-c97e8422e31b
+            region: content
+            configuration:
+              id: 'extra_field_block:node:team:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          column_widths: 33-67
+        components:
+          6d32cb6a-e6eb-4ff0-9f8f-11b4db2a1b45:
+            uuid: 6d32cb6a-e6eb-4ff0-9f8f-11b4db2a1b45
+            region: first
+            configuration:
+              id: team_timeline_block
+              label: Timeline
+              label_display: visible
+              provider: all_games
+              context_mapping:
+                node: layout_builder.entity
+            weight: 0
+            additional: {  }
+          d8f3553d-5ee8-4d25-838b-06d06fed0838:
+            uuid: d8f3553d-5ee8-4d25-838b-06d06fed0838
+            region: second
+            configuration:
+              id: 'views_block:team_game_videos-block_1'
+              label: 'Latest Uploaded Game'
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: 'Latest Uploaded Game'
+              items_per_page: none
+            weight: 0
+            additional: {  }
+          7c9a0c6c-7f85-43f4-924b-b2f277200e34:
+            uuid: 7c9a0c6c-7f85-43f4-924b-b2f277200e34
+            region: second
+            configuration:
+              id: 'views_block:team_game_videos-block_2'
+              label: 'Latest Uploaded Feature'
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: 'Latest Uploaded Feature'
+              items_per_page: none
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
 id: node.team.default
 targetEntityType: node
 bundle: team
