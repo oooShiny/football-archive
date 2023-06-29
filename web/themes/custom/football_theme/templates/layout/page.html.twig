@@ -79,10 +79,13 @@
 
   </main>
 
-  {% if page.footer %}
-    <footer role="contentinfo">
+    <footer role="contentinfo" class="bg-gray-500 flex flex-wrap justify-between lg:flex-nowrap text-gray-50">
       {{ page.footer }}
+      <p class="text-xs p-4">
+        The material made available on this website is intended for nonprofit, educational purposes
+        under section 107 of the U.S. Copyright Act of 1976 (Fair Use Doctrine) and is intended for
+        criticism, comment, news reporting, teaching, scholarship, and research.
+      </p>
     </footer>
-  {% endif %}
 
 </div>{# /.layout-container #}
